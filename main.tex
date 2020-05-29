@@ -396,7 +396,7 @@ Thus, $\mu_1 = \max \mu \leq \max \lambda$.
 \end{proof}
 
 \begin{remark}
-There is also a similar result, $\min_{\lambda \in \sigma(A)} \lambda \leq \min_{\mu \in \sigma(B)} \mu$.
+There is a similar result, $\min_{\lambda \in \sigma(A)} \lambda \leq \min_{\mu \in \sigma(B)} \mu$.
 \end{remark}
 
 \medskip
@@ -482,10 +482,118 @@ Since $A$ and $B$ be two $n \times n$ real orthogonal matrices, then $\det A = \
 and hence $\det (A + B) = 0$.
 \end{proof}
 
+\medskip
 
+\begin{exercise}
+Prove that a complex $3 \times 3$ matrix $A$ is nilpotent if and only if $\Tr \left(A^k\right) = 0$ for $k = 1, 2, 3$.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item ($\Rightarrow$) Since $A$ is nilpotent, then all eigenvalues are zero. Then, $\Tr \left(A\right) = 0$. Also, $A$ is unitary similar to an upper triangular matrix $T$, whose diagonal entries are eigenvalues, and it follows naturally that $\Tr \left(A^k\right) = 0, k = 2, 3$.
+    
+    \item Denote by $x, y, z$ the eigenvalues of $A$, and consider upper triangular matrix $T$ which is similar to $A$. Since $\Tr \left(A^k\right) = 0$ for $k = 1, 2, 3$, then so does $T$. Then,
+    \begin{align*}
+        \begin{cases}
+            x + y + z = 0, \\
+            x^2 + y^2 + z^2 = 0, \\
+            x^3 + y^3 + z^3 = 0.
+        \end{cases}
+    \end{align*}
+    By solving this, we have that the solution is $x = y = z = 0$. Thus, $A$ is nilpotent.
+\end{enumerate}
+\end{proof}
 
+\medskip
 
-
+\begin{exercise}
+For an invertible matrix $P \in \mathbb{R}^{n \times n}$, let $T_P: \mathbb{R}^{n \times n} \to \mathbb{R}^{n \times n}$ be the linear map defined by $T_P(M):= PMP^{-1}$ for any $M \in \mathbb{R}^{n \times n}$.
+\begin{enumerate}[label=(\alph*)]
+    \item For an orthogonal matrix $O$, show that the space $S(n) \subset \mathbb{R}^{n \times n}$ of symmetric $n \times n$ matrices is invariant under $T_O$.
+    
+    \item Now let $O$ be the $3 \times 3$ rotation matrix:
+    \begin{align*}
+        O = \begin{pmatrix}
+            0 & -1 & 0 \\
+            1 & 0  & 0 \\
+            0 & 0  & 1
+        \end{pmatrix}.
+    \end{align*}
+    Compute the minimal and characteristic polynomials of $T_O$ on $S(3)$.
+\end{enumerate}
+{\bf Hint:} Note that $O^4 = I$.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Since $O$ is orthogonal matrix, then for any $S \in S(n)$, $T_O = OSO^{-1} = OSO^T$. Then, $\left(OSO^T\right)^T = OS^TO^T = OSO^T$, since $S$ is symmetric. Thus, $T_O$ is also a symmetric matrix, and hence $S(n)$ is invariant under $T_O$.
+    
+    \item* Note that 
+    \begin{align*}
+        T_{O_1}T_{O_2}(S) = O_1 O_2 S O_2^T O_1^T = T_{O_1 O_2}(S),
+    \end{align*}
+    then by $O^4 = I$, we have $T_{O^4}(S) = T_{O}^4(S) = S$. Then we have $T_{O}^4 = I$, which gives eigenvalues of $T_O$, $\lambda = \{1, -1, i, -i\}$.
+    
+    Let $S = \begin{pmatrix}
+        a & b & c \\
+        b & d & e \\
+        c & e & f
+    \end{pmatrix}$, and for $\lambda = 1$, we have
+    \begin{align*}
+        T_O(S) = \begin{pmatrix}
+        d & -b & -e \\
+        -b & a & c \\
+        -e & c & f
+    \end{pmatrix} = \begin{pmatrix}
+        a & b & c \\
+        b & d & e \\
+        c & e & f
+    \end{pmatrix} = S,
+    \end{align*}
+    which gives the eigenspace
+    \begin{align*}
+        \left\{\begin{pmatrix}
+        1 & &  \\
+        & 1 &  \\
+        & & 0
+    \end{pmatrix}, \begin{pmatrix}
+        0 & &  \\
+        & 0 &  \\
+        & & 1
+    \end{pmatrix}\right\}.
+    \end{align*}
+    For $\lambda = -1$, we have
+    \begin{align*}
+        T_O(S) = \begin{pmatrix}
+        d & -b & -e \\
+        -b & a & c \\
+        -e & c & f
+    \end{pmatrix} = \begin{pmatrix}
+        -a & -b & -c \\
+        -b & -d & -e \\
+        -c & -e & -f
+    \end{pmatrix} = -S,
+    \end{align*}
+    which gives the eigenspace
+    \begin{align*}
+        \left\{\begin{pmatrix}
+        1 & &  \\
+        & -1 &  \\
+        & & 0
+    \end{pmatrix}, \begin{pmatrix}
+        1 & 1  & 0 \\
+        1 & -1 & 0 \\
+        0 & 0  & 0
+    \end{pmatrix}\right\}.
+    \end{align*}
+    Also, since $\dim S(3) = 6$, then the characteristic polynomials of $T_O$ on $S(3)$ is 
+    \begin{align*}
+        p_\lambda = (\lambda - 1)^2 (\lambda + 1)^2 (\lambda^2 + 1).
+    \end{align*}
+    And the minimal polynomial of $T_O$ on $S(3)$ is
+    \begin{align*}
+        m(\lambda) = (\lambda - 1) (\lambda + 1) (\lambda^2 + 1).
+    \end{align*}
+\end{enumerate}
+\end{proof}
 
 
 
