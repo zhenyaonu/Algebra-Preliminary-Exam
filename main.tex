@@ -596,6 +596,176 @@ For an invertible matrix $P \in \mathbb{R}^{n \times n}$, let $T_P: \mathbb{R}^{
 \end{proof}
 
 
+\newpage
+
+\section{May 2018 Exam}
+
+\begin{exercise}
+Let $A \in \mathbb{R}^{n \times n}$ be a matrix whose components are either $1$ or $-1$. Prove that $\det A = 2^{n-1} m$, where $m$ is an integer.
+\end{exercise}
+\begin{proof}
+We prove it by induction.
+\begin{enumerate}[label=(\alph*)]
+    \item When $n = 1$, then the claim follows naturally, since $\det A = \pm 1 = 2^{0} (\pm 1)$.
+    
+    \item Suppose the claim is true for $n = k$, then for any $A_k \in \mathbb{R}^{k \times k}$, $\det A_k = 2^{k-1}m$ for some integer $m$. Now we consider $A_{k+1} \in \mathbb{R}^{(k+1) \times (k+1)}$, with entries $a_{ij}$, and without losing any generality, we could assume that $a_{11} = 1$.
+    
+    If $a_{12} = 1$, then we add $-1$ times of the second column to the first one, if $a_{12} = -1$, then we add the second column to the first one and we get a new matrix $\widetilde{A}_{k+1}$. Then, for $\widetilde{A}_{k+1}$, $a_{11} = 0$ and $a_{i1} = 0, 2$ or $-2$ for all $2 \leq i \leq k+1$.
+    
+    By Laplace expansion, we expand $\widetilde{A}_{k+1}$ through the first column, then we have
+    \begin{align*}
+        \det A_{k+1} = \det \widetilde{A}_{k+1} & = \sum^{k+1}_{i=1} (-1)^{i+1} a_{i1} \widetilde{A}'_{ik} \\
+        & = 2 \sum^l_{a_{i1}=2} (-1)^{i+1} \widetilde{A}'_{ik} + 2 \sum^p_{a_{i1}=-2} (-1)^{i+2} \widetilde{A}'_{ik} \\
+        & = 2 \sum^l_{a_{i1}=2} (-1)^{i+1} 2^{k-1} m_i + 2 \sum^p_{a_{i1}=-2} (-1)^{i+2} 2^{k-1} m_i \\
+        & = 2^k \left(\sum^l_{a_{i1}=2} (-1)^{i+1} m_i + \sum^p_{a_{i1}=-2} (-1)^{i+2} m_i \right) = 2^k m_{k+1},
+    \end{align*}
+    where $\widetilde{A}'_{ik}$ is the minor of the entry in $i$th row and the first column of matrix $\widetilde{A}$, and by hypothesis, $\det \widetilde{A}'_{ik} = 2^{k-1} m_i$ for some integer $m_i$. Also, the sum of integers is still integer. Thus, by induction, the claim follows.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Assume that $V$ is a finite dimensional complex vector space. Suppose $T, U \in \mathscr{L}(V, V)$ are two operators and that $TU - UT$ is nonnegative. Prove that $T$ and $U$ have a common eigenvector.
+\end{exercise}
+\begin{proof}
+Let $\dim V = n$. Since $TU - UT$ is nonnegative, then there exists an orthogonal basis $\mathcal{B}$ under which $TU - UT$ is a diagonal matrix with nonnegative diagonal entries. 
+
+Also, since
+\begin{align*}
+    \Tr (TU - UT) = \Tr(TU) - \Tr(UT) = 0,
+\end{align*}
+then $TU - UT$ is zero matrix under basis $\mathcal{B}$. 
+
+Now, since $TU = UT$, then we claim there exists a basis of $V$ which consists of eigenvectors and generalized eigenvectors of both $T$ and $U$. Indeed, let $\{\lambda_j \}^K_{j=1}$ be $K$ distinct eigenvalues of $U$, then $V = \oplus^K_{j=1}N_j$, where $N_j$ is null space of $(U - \lambda_j I)^{d_j}$ and $d_j = d(\lambda_j)$ is the index of $\lambda_j$. For any $x \in V$, since $TU = UT$, then 
+\begin{align*}
+    T (U - \lambda_j I)^{d_j} x = (U - \lambda_j I)^{d_j} T x.
+\end{align*}
+If $x \in N_j$, then $(U - \lambda_j I)^{d_j} x = 0$, which implies $Tx \in N_j$. Then, $T$ is a map from $N_j$ into $N_j$. By Spectral theorem, $T|_{N_j}$ forms a spectral decomposition of each $N_j$, thus, $N_j$ has a basis consisting of eigenvectors and  generalized eigenvectors of $T$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}\label{May_2018_3}
+Prove that for any two matrices, $A, B \in \mathbb{R}^{n \times n}$,
+\begin{align*}
+    \det (I - AB) = \det (I - BA).
+\end{align*}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $A$ is invertible, then 
+    \begin{align*}
+        \det (I - AB) = \det \left(A^{-1} (I - AB ) A\right) = \det (I - BA).
+    \end{align*}
+    
+    \item If $A$ is not invertible, then there exists $\varepsilon_k \to 0$ as $k \to \infty$ such that $\det (A + \varepsilon_k I) \neq 0$. Then, we have
+    \begin{align*}
+        \det (I -  AB) & = \lim_{k\to\infty} \det \left(I - (A + \varepsilon_k I) B\right) \\
+        & = \lim_{k\to\infty} \det \left(I - B(A + \varepsilon_k I)\right) \\
+        & = \det (I - BA).
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{proof}[Second Proof of Exercise \ref{May_2018_3}]
+Since 
+\begin{align*}
+    \begin{pmatrix} I & A \\ B & I \end{pmatrix} & = \begin{pmatrix} I & O \\ B & I \end{pmatrix} \begin{pmatrix} I & O \\ O & I - BA \end{pmatrix} \begin{pmatrix} I & A \\ O & I \end{pmatrix}, \\
+    \begin{pmatrix} I & A \\ B & I \end{pmatrix} & = \begin{pmatrix} I & A \\ O & I \end{pmatrix} \begin{pmatrix} I - AB & O \\ O & I \end{pmatrix} \begin{pmatrix} I & O \\ B & I \end{pmatrix},
+\end{align*}
+and 
+\begin{align*}
+    \det \begin{pmatrix} I & O \\ B & I \end{pmatrix} = \det \begin{pmatrix} I & A \\ O & I \end{pmatrix} = 1,
+\end{align*}
+then we have
+\begin{align*}
+    \det \begin{pmatrix} I & O \\ O & I - BA \end{pmatrix} = \det \begin{pmatrix} I - AB & O \\ O & I \end{pmatrix},
+\end{align*}
+which is equivalent to
+\begin{align*}
+    \det (I - BA) = \det (I - AB).
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+~\begin{enumerate}[label=(\alph*)]
+    \item Assume $A \in \mathbb{C}^{n \times n}$ has $n$ distinct nonzero eigenvalues. Prove that there are exactly $2n$ distinct matrices $B$ such that $B^2 = A$(i.e., in particular, there are no more than $2n$ matrices with this property).
+    
+    \item How many such matrices $B \in \mathbb{C}^{3 \times 3}$ exist if $A = \operatorname{diag}(2, 2, 1)$?
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Since $A$ has $n$ distinct eigenvalues, then $A$ can be unitarily diagonalizable, such that there exists unitary matrix $U$ such that $A = U \Lambda U^*$, where $\Lambda = \operatorname{diag}(\lambda_1, \cdots, \lambda_n)$ and $\lambda_i \neq 0, i = 1, \cdots, n$. Then, $U^* A U = \Lambda$.
+    
+    Now let $S = U^* B U$, and then $U^* B^2 U = S^2 = \Lambda$. And since $\Lambda$ is diagonal, then $S$ commutes with $\Lambda$. Suppose
+    \begin{align*}
+        S = \begin{pmatrix}
+            s_{11} & \cdots & s_{1n} \\
+            \vdots & \ddots & \vdots \\
+            s_{n1} & \cdots & s_{nn}
+        \end{pmatrix},
+    \end{align*}
+    and then $S \Lambda = \Lambda S$ implies $s_{ij} = 0$ for $i \neq j$. Indeed, $s_{ij} \lambda_j = \lambda_i s_{ij}$ and $\lambda_i \neq \lambda_j$. Therefore, $S = \operatorname{diag}(s_{11}, \cdots, s_{nn})$.
+    
+    Since $S^2 = \Lambda$, then $s_{ii} = \pm \sqrt{\lambda_i}$. Then, there are exactly $2^n$ choices for $S$, and thus there are exactly $2^n$ matrices $B$ such that $B^2 = A$.
+    
+    \item Let 
+    \begin{align*}
+        B = \begin{pmatrix}
+            b_{11} & b_{12} & b_{13} \\
+            b_{21} & b_{22} & b_{23} \\
+            b_{31} & b_{31} & b_{33}
+        \end{pmatrix},
+    \end{align*}
+    and since $B$ and $A$ commutes, then we have 
+    \begin{align*}
+        \begin{pmatrix}
+            2b_{11} & 2b_{12} & b_{13} \\
+            2b_{21} & 2b_{22} & b_{23} \\
+            2b_{31} & 2b_{31} & b_{33}
+        \end{pmatrix} = \begin{pmatrix}
+            2b_{11} & 2b_{12} & 2b_{13} \\
+            2b_{21} & 2b_{22} & 2b_{23} \\
+            b_{31} & b_{31} & b_{33}
+        \end{pmatrix},
+    \end{align*}
+    which gives 
+    \begin{align*}
+        B = \begin{pmatrix}
+            b_{11} & b_{12} & 0 \\
+            b_{21} & b_{22} & 0 \\
+            0 & 0 & b_{33}
+        \end{pmatrix}.
+    \end{align*}
+    
+    Since $B^2 = A$, then we have equations
+    \begin{align*}
+        \begin{cases}
+            b_{11}^2 + b_{12}b_{21} = 0, \\
+            b_{11} b_{12} + b_{12} b_{22} = 0, \\
+            b_{11} b_{21} + b_{21} b_{22} = 0, \\
+            b_{22}^2 + b_{12}b_{21} = 0,
+        \end{cases}
+    \end{align*}
+    and if $b_{22} = 0, b_{21} \neq 0$, then the equations reduces to $b_{11} = - b_{22} = 0$ and $b_{12}b_{21} = 0$, which gives infinitely choices for $b_{21}$ and $b_{12}$. Thus, in this case, there exist infinitely many matrices $B$ such that $B^2 = A = \operatorname{diag}(2, 2, 1)$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $f: \mathbb{C}^{n+1} \times \mathbb{C}^{n+1} \to \mathbb{C}$ be the function defined for all 
+\end{exercise}
+
+
+
+
+
+
 
 
 
@@ -606,6 +776,5 @@ For an invertible matrix $P \in \mathbb{R}^{n \times n}$, let $T_P: \mathbb{R}^{
 \newpage
 \bibliographystyle{unsrt}
 \bibliography{bibliography}
-
 
 \end{document}
