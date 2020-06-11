@@ -758,8 +758,119 @@ which is equivalent to
 \medskip
 
 \begin{exercise}
-Let $f: \mathbb{C}^{n+1} \times \mathbb{C}^{n+1} \to \mathbb{C}$ be the function defined for all 
+Let $f: \mathbb{C}^{n+1} \times \mathbb{C}^{n+1} \to \mathbb{C}$ be the function defined for all $\mathbf{x}, \mathbf{y} \in \mathbb{C}^{n+1}$ by
+\begin{align*}
+    f(\mathbf{x}, \mathbf{y}) = \sum^n_{j=1} x_j \overline{y}_j - x_{n+1} \overline{y}_{n+1}.
+\end{align*}
+\begin{enumerate}[label=(\alph*)]
+    \item For $A, B \in \mathbb{C}^{(n+1) \times (n+1)}$, show that $f(A\mathbf{x}, \mathbf{y}) = f(\mathbf{x}, B\mathbf{y})$ for all $\mathbf{x}, \mathbf{y} \in \mathbb{C}^{n+1}$ if and only if $A = JB^*J$, where $J = \operatorname{diag}(1, \cdots, 1, -1)$.
+    
+    \item We define
+    \begin{align*}
+        U(n, 1) = \left\{ U \in \mathbb{C}^{(n+1) \times (n+1)} | f(U\mathbf{x}, U \mathbf{y}) = f(\mathbf{x}, \mathbf{y}), \forall \mathbf{x}, \mathbf{y} \in \mathbb{C}^{n+1} \right\}.
+    \end{align*}
+    Show that if $U \in U(n,1)$, then $U$ is invertible. How do $U^{-1}$ and $U^*$ relate?
+\end{enumerate}
 \end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item By definition of $f$, we have
+    \begin{align}\label{new_bilinear_form}
+        f(\mathbf{x}, \mathbf{y}) = (\mathbf{x}, J\mathbf{y}),
+    \end{align}
+    where $J = \operatorname{diag}(1, \cdots, 1, -1)$. Then, since $f(A\mathbf{x}, \mathbf{y}) = f(\mathbf{x}, B\mathbf{y})$, then by the above equation, we have
+    \begin{align*}
+        (J^*A\mathbf{x}, \mathbf{y}) =(A\mathbf{x}, J\mathbf{y}) = (\mathbf{x}, JB\mathbf{y}) = (B^* J^* \mathbf{x}, \mathbf{y}),
+    \end{align*}
+    which implies $J^*A = B^* J^*$, and since $J^* = J = J^{-1}$, we have $A = J B^* J$.
+    
+    \item Since $f(U\mathbf{x}, U \mathbf{y}) = f(\mathbf{x}, \mathbf{y})$, then by \ref{new_bilinear_form}, we have
+    \begin{align*}
+        (\mathbf{x}, U^* J U\mathbf{y}) = (U\mathbf{x}, JU\mathbf{y}) = (\mathbf{x}, J\mathbf{y}),
+    \end{align*}
+    which implies $U^* J U = J$. Since $J = \operatorname{diag}(1, \cdots, 1, -1)$, we have
+    \begin{align*}
+        J U^* J U = J^2 = I, 
+    \end{align*}
+    and then $U^{-1} = J U^* J$. Thus, $U$ is invertible.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Prove that there exists a constant $C > 0$ such that for all matrices $A \in \mathbb{C}^{3 \times 3}$, there exists $P \in U(3)$ and a diagonal $D \in \mathbb{C}^{3 \times 3}$ such that
+\begin{align*}
+    \left\| P^*AP - D \right\|^2 \leq C \left\| A^* A - A A^* \right\|,
+\end{align*}
+where $\|B\| = \sqrt{\Tr (B B^*)}$ denotes the Hilbert-Schmidt norm of $B$.\\
+{\bf Hint:} Prove the statement for the triangular matrices first.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item For any upper triangular matrix $A \in \mathbb{C}^{3 \times 3}$,
+    \begin{align*}
+        A = \begin{pmatrix}
+            a & b & c \\
+            0 & d & e \\
+            0 & 0 & f
+        \end{pmatrix},
+    \end{align*}
+    then
+    \begin{align*}
+        A^*A - AA^* = \begin{pmatrix}
+            -|b|^2 - |c|^2 & b(\overline{a} - \overline{d}) - c \overline{e} & c(\overline{a} - \overline{f}) \\
+            (a - d)\overline{b} - e \overline{c} & |b|^2 - |e|^2 & e(\overline{d} - \overline{f}) + e \overline{b}\\
+            (a - f)\overline{c} & (d - f) \overline{e} + b \overline{c} & |c|^2 + |e|^2
+        \end{pmatrix}.
+    \end{align*}
+    
+    Now let
+    \begin{align*}
+        D = \begin{pmatrix}
+            0 & b & c \\
+            0 & 0 & e \\
+            0 & 0 & 0
+        \end{pmatrix},
+    \end{align*}
+    then
+    \begin{align*}
+        \|A - D\|^2 = \Tr \begin{pmatrix}
+            |b|^2 + |c|^2 & c \overline{e} & 0 \\
+            e \overline{c} & |e|^2 & 0 \\
+            0 & 0 & 0
+         \end{pmatrix} = |b|^2 + |c|^2 + |e|^2.
+    \end{align*}
+    
+    Also, since $A^* A - A A^*$ is Hermitian, then 
+    \begin{align*}
+        \sqrt{2} \left\|A^* A - A A^*\right\| & = \sqrt{2} \sqrt{\Tr \left( (A^* A - A A^*)^2 \right)} \\
+        & \geq \sqrt{2} \sqrt{\left(|b|^2 + |c|^2\right)^2 + \left(|b|^2 - |e|^2\right)^2 + \left(|c|^2 + |e|^2\right)^2} \\
+        & =  \sqrt{2\left(|b|^2 + |c|^2\right)^2 + 2\left(|b|^2 - |e|^2\right)^2 + 2\left(|c|^2 + |e|^2\right)^2} \\
+        & \geq \sqrt{\left(|b|^2 + |c|^2\right)^2 + |b|^4 + \left(|b|^2 - |e|^2\right)^2 + \left(|c|^2 + |e|^2\right)^2 + |e|^4} \\
+        & \geq \sqrt{\left(|b|^2 + |c|^2\right)^2  + \left(|b|^2 - |e|^2\right)^2 + 2|b|^2|e|^2 + \left(|c|^2 + |e|^2\right)^2} \\
+        & \geq \sqrt{\left(|b|^2 + |c|^2\right)^2  + |b|^4 + |e|^4 + \left(|c|^2 + |e|^2\right)^2} \\
+        & \geq \sqrt{\left(|b|^2 + |c|^2\right)^2  + 2|b|^2|e|^2 + \left(|c|^2 + |e|^2\right)^2} \\
+        & = \sqrt{\left(|b|^2 + |c|^2 + |e|^2\right)^2 + |c|^4} \\
+        & \geq |b|^2 + |c|^2 + |e|^2.
+    \end{align*}
+    Thus, 
+    \begin{align*}
+        \|A - D\| \leq \sqrt{2} \left\|A^* A - A A^*\right\|.
+    \end{align*}
+    
+    \item For every matrix $A \in \mathbb{C}^{3 \times 3}$, by Schur decomposition, there exists a unitary matrix $P$ such that $P^* A P = T$, where $T$ is an upper triangular matrix. Thus, we have
+    \begin{align*}
+        \left\|P^* A P - D \right\|^2 & = \|T - D\|^2 \\
+        & \leq \sqrt{2} \left\|T^* T - T T^*\right\| \\
+        & = \sqrt{2} \left\|P^* A^* P P^* A P - P^* A P P^* A^* P\right\| \\
+        & = \sqrt{2} \left\|P^* A^* A P - P^* A A^* P\right\| \\
+        & = \sqrt{2} \left\|P^* (A^* A - A A^*) P\right\| \\
+        & = \sqrt{2} \left\|A^* A - A A^*\right\|.
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
 
 
 
