@@ -871,6 +871,160 @@ where $\|B\| = \sqrt{\Tr (B B^*)}$ denotes the Hilbert-Schmidt norm of $B$.\\
 \end{enumerate}
 \end{proof}
 
+\newpage
+
+\section{August 2017 Exam}
+
+{\bf Some notations:} Given any linear transformation $T$, its transpose is denoted by $T^t$, and its adjoint with respect to an identified inner product is represented by $T^*$. Similarly, $A^t$ denotes the transpose of a matrix $A$, while $A^*$ denotes its adjoint, i.e. its conjugate transpose. The classical ajoint (or adjugate) of a square matrix is the transpose of the cofactor matrix $\operatorname{cof}(A)$ and is denoted by $\operatorname{adj}(A)$. A square complex matrix is said to be positive (resp. nonnegative), when $A$ is Hermitian (self-adjoint) and for all nonzero $x \in \mathbb{C}^n$, the standard inner product $(Ax, x) > 0$ (resp. nonnegative). The Hilbert-Schmidt inner product of two complex matrices $A, B \in \mathbb{C}^{n \times m}$ is defined by $A : B = \Tr \left(AB^*\right)$.
+
+\medskip
+
+\begin{exercise}{\rm *}
+Let $A \in \mathbb{C}^{n \times n}$ be an arbitrary matrix.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that for all integer $m \geq 0$, $\operatorname{cof}\left(A^m\right) = \operatorname{cof}\left(A\right)^m$.
+    
+    \item Prove that if $n = 2$, $\operatorname{cof}\left(e^A\right) = e^{\operatorname{cof}(A)}$, where for any matrix $A \in \mathbb{C}^{n \times n}$, $e^A$ is defined by
+    \begin{align*}
+        e^A = \sum^\infty_{m=0} \frac{A^m}{m!}.
+    \end{align*}
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item \begin{enumerate}[label=\arabic*)]
+        \item If $A$ is invertible, then by $A^{-1} = \frac{1}{\det(A)} \operatorname{cof}(A)^t$, we have $\det(A) I = A \operatorname{adj}(A)$, since $\operatorname{adj}(A)$ is transpose of $\operatorname{cof}(A)$. Taking transpose on both sides gives
+        \begin{align*}
+            \operatorname{cof}(A) = \det(A) (A^t)^{-1}.
+        \end{align*}
+        Thus, we have
+        \begin{align*}
+            \operatorname{cof}(A^m) & = \det(A^m) [(A^m)^t]^{-1} \\
+            & = \det(A)^m [(A^t)^m]^{-1} \\
+            & = \det(A)^m [(A^t)^{-1}]^m = \operatorname{cof}(A)^m.
+        \end{align*}
+        
+        \item If $A$ is not invertible. Then there exists $\varepsilon > 0$ such that $A_\varepsilon = \varepsilon I + A$ is invertible. Then, by (a), we have $\operatorname{cof}(A_\varepsilon^m) = \operatorname{cof}(A_\varepsilon)^m$. Also, since $\varepsilon I$ and $A$ commute, then $A_\varepsilon^m = \sum^{n+1}_{i=0} \binom{n}{i} (\varepsilon I)^i A^{n+1-i}$. Letting $\varepsilon \to 0$, then $\lim_{\varepsilon \to 0} A_\varepsilon = A$ and hence $\operatorname{cof}(A^m) = \operatorname{cof}(A)^m$.
+    \end{enumerate}
+    
+    \item For any $A, B \in \mathbb{C}^{2 \times 2}$ and $c \in \mathbb{R}$, let
+    \begin{align*}
+        A = \begin{pmatrix}
+            a_1 & a_2 \\
+            a_3 & a_4
+        \end{pmatrix}, \quad B = \begin{pmatrix}
+            b_1 & b_2 \\
+            b_3 & b_4
+        \end{pmatrix},
+    \end{align*}
+    then we have
+    \begin{align*}
+        \operatorname{cof}(cA) & = \operatorname{cof}
+        \begin{pmatrix}
+            c a_1 & c a_2 \\
+            c a_3 & c a_4
+        \end{pmatrix} = \begin{pmatrix}
+            c a_4 & - c a_3 \\
+            - c a_32 & c a_1
+        \end{pmatrix} = c \operatorname{cof}(A), \\
+        \operatorname{cof}(A + B) & = \operatorname{cof} \begin{pmatrix}
+            a_1 + b_1 & a_2 + b_2 \\
+            a_3 + b_3 & a_4 + b_4
+        \end{pmatrix} = \operatorname{cof}(A) + \operatorname{cof}(B),
+    \end{align*}
+    and hence $\operatorname{cof}$ is a linear operator for $A \in \mathbb{C}^{2 \times 2}$. Thus, we have
+    \begin{align*}
+        \operatorname{cof} \left(\sum^\infty_{m=0} \frac{A^m}{m!} \right) = \sum^\infty_{m=0} \operatorname{cof} \left(\frac{A^m}{m!}\right) = \sum^\infty_{m=0} \frac{\operatorname{cof} \left(A^m\right)}{m!} = \frac{\operatorname{cof}\left(A\right)^m}{m!} = e^{\operatorname{cof}(A)},
+    \end{align*}
+    where the last step comes from (a).
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $A$ and $B$ be two Hermitian complex matrices.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that $\Tr(AB)$ is real. 
+    
+    \item Prove that if $A, B$ are positive, then $\Tr(AB) > 0$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Let $A = \left(a_{ij}\right)_{n \times n}$, $B = \left(b_{ij}\right)_{n \times n}$, and then $a_{ij} = \overline{a_{ji}}, b_{ij} = \overline{b_{ji}}$. Then we have
+    \begin{align*}
+        \Tr(AB) = \sum^n_{i=1} \sum^n_{j=1} a_{ij} b_{ji} = \sum^n_{i=1} \sum^n_{j=1} \overline{a_{ji}} \overline{b_{ij}} =  \sum^n_{i=1} \sum^n_{j=1} \overline{a_{ji} b_{ij}} = \overline{\sum^n_{i=1} \sum^n_{j=1} a_{ji} b_{ij}} = \overline{\Tr(AB)},
+    \end{align*}
+    and thus $\Tr(AB)$ is real. 
+    
+    \item Since $B$ is Hermitian, then $B$ can be diagonalized by a unitary matrix $P$ such that $B = P \Lambda P^*$, where $\Lambda$ is diagonal matrix with entries being eigenvalues of $B$. Since $B > 0$, then all eigenvalues of $B$ is positive, denoted by $\lambda_1, \cdots, \lambda_n$.
+    
+    Now consider $P^*AP$, since $A > 0$, then for any $x \in \mathbb{R}^n$,
+    \begin{align*}
+        \left(P^*APx, x\right) = \left(APx, Px\right) > 0.
+    \end{align*}
+    Let $x = e_i$ be the standard basis, then the above inequality implies that the diagonal entries $d_i$ of $P^*AP$ are all positive. Since similar matrix has same trace, then
+    \begin{align*}
+        \Tr(AB) & = \Tr\left(P^*ABP\right) = \Tr \left(P^*APP^*BP\right) \\
+        & = \Tr \left(P^*AP \Lambda\right) = \sum^n_{i=1} d_i \lambda_i > 0.
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $A$ be an $n \times n$ matrix with $n$ distinct nonzero eigenvalues. Consider the linear map $S_A: \mathbb{C}^{n \times n} \to \mathbb{C}^{n \times n}$ given by:
+\begin{align*}
+    S_A(X) = AX - XA.
+\end{align*}
+\begin{enumerate}[label=(\alph*)]
+    \item Find are the dimensions of null space and range of $S_A$.
+    
+    \item Find the eigenvalues and eigenvectors of $S_A$. Is $S_A$ diagonalizable?
+    
+    \item Find the minimal polynomial of $S_A$ when $A = \operatorname{diag}(1,2,3)$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Since $A$ has $n$ distinct nonzero eigenvalues, then $A$ is diagonalizable, that is, there exists an invertible matrix $P$ such that $A = P \Lambda P^{-1}$, where $\Lambda$ is diagonal. Then, 
+    \begin{align*}
+        AX - XA & = P \Lambda P^{-1} X - X P \Lambda P^{-1} \\
+        & = P \left(\Lambda P^{-1} X P - P^{-1} X P \Lambda \right) P^{-1},
+    \end{align*}
+    and if $X \in N_{AX - XA}$, then $\Lambda$ commutes with $P^{-1} X P$. Since $\Lambda$ is diagonal, then $P^{-1} X P$ must also be a diagonal matrix. Thus, $\dim N_{AX - XA} = n$, since we can choose a basis $\{E^i\}^n_{i=1}$ for $N_{AX - XA}$, where $E^i$ is a matrix with $E_{ii} = 1$ and $E_{ij} = 0$ otherwise. 
+    
+    By Rank-Nullity theorem, $\dim R_{AX - XA} = n^2 - n$. 
+    
+    \item Let $P^{-1} X P = B = \left(b_{ij}\right)_{n \times n}$ and $\Lambda = \operatorname{diag}(\lambda_1, \cdots, \lambda_n)$, then $AX - XA = P (\Lambda B - B \Lambda) P^{-1}$ and 
+    \begin{align*}
+        \Lambda B - B \Lambda = \begin{pmatrix}
+            0 & (\lambda_1 - \lambda_2) b_{12} & (\lambda_1 - \lambda_3) b_{13} & \cdots & (\lambda_1 - \lambda_n) b_{1n} \\
+            (\lambda_2 - \lambda_1) b_{21} & 0 & (\lambda_2 - \lambda_3) b_{23} & \cdots & (\lambda_2 - \lambda_n) b_{2n} \\
+            (\lambda_3 - \lambda_1) b_{31} & (\lambda_3 - \lambda_2) b_{32} & 0 & \cdots & (\lambda_3 - \lambda_n) b_{3n} \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            (\lambda_n - \lambda_1) b_{n1} & (\lambda_n - \lambda_2) b_{n2} & (\lambda_n - \lambda_3) b_{n3} & \cdots & 0
+        \end{pmatrix}.
+    \end{align*}
+    Consider $X$ such that $S_A(X) = \lambda X$ for some $\lambda$, then it is equivalent to that $AX - XA = P (\Lambda B - B \Lambda) P^{-1} = P (\lambda B) P^{-1}$. It suffice to find $X$ such that $\Lambda B - B \Lambda = \lambda B$. Then, we can choose $B$ as $E^{ij}$, where $E^{ij}$ is a matrix where the entry on $i$th row and $j$th column of $E^{ij}$ is $1$, and all other entries are zero. Now we have
+    \begin{align*}
+        S_A(E^{ij}) = \begin{cases}
+            (\lambda_i - \lambda_j) E^{ij}, & i \neq j, \\
+            0, & i = j.
+        \end{cases}
+    \end{align*}
+    Then, $\left\{P E^{ij} P^{-1}\right\}_{i,j=1}$ form a basis for eigenvectors of $S_A$, and eigenvalues are $0, \lambda_i - \lambda_j$ for all $i \neq j$. And since $\{P E^{ij} P^{-1}\}_{i,j=1}$ also forms a basis for $\mathbb{C}^{n \times n}$, $S_A$ is diagonalizable.
+    
+    \item Since $A = \operatorname{diag}(1,2,3)$, then by (b), the eigenvlaues for $S_A$ are $0, \pm 1, \pm 2$. Since $S_A$ is diagoonalizable, then the minimal polynomial is 
+    \begin{align*}
+        m_{S_A}(\lambda) = \lambda \left(\lambda^2 - 1\right) \left(\lambda^2 - 4\right).
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+
 
 
 
