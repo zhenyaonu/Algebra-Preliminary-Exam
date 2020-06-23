@@ -1146,6 +1146,63 @@ Let $R \in O(4)$.
 \end{enumerate}
 \end{proof}
 
+\medskip
+
+\begin{exercise}{\rm *}\label{Aug_2017_6}
+Prove that for all $n$, $\operatorname{span} {\rm U}(n) = \mathbb{C}^{n \times n}$, where ${\rm U}(n)$ is the group of all $n \times n$ unitary matrices.\\
+{\bf Hint:} Polar decomposition theorem could be useful.
+\end{exercise}
+\begin{proof}
+First, we could prove that any Hermitian matrix is a linear combination of unitary matrices. Then, by Polar decomposition, the result follows\cite{8}.
+\begin{enumerate}[label=(\alph*)]
+    \item For any Hermitian matrix $R$, it can be digonalized, that is, there is a unitary matrix $P$ such that $R = P \Lambda P^*$, where $\Lambda$ is diagonal. We want to show that any Hermitiain is a linear combination of unitary matrices. 
+    
+    Suppose $\Lambda = \operatorname{diag}(\lambda_1, \cdots, \lambda_n)$, then let $\widetilde{\Lambda} = \operatorname{diag}(\lambda_1/\lambda, \cdots, \lambda_n/\lambda)$, where $\lambda = \max_{i}|\lambda_i|$. Now, let $U_A$ be a diagonal matrix with diagonal entries $\lambda_i/\lambda + i \sqrt{1 - (\lambda_i/\lambda)^2}, i = 1, \cdots, n$ and $U_B$ be a diagonal matrix with diagonal entries $\lambda_i/\lambda - i \sqrt{1 - (\lambda_i/\lambda)^2}, i = 1, \cdots, n$. Then, $U_A$ and $U_B$ are unitary matrices, since
+    \begin{align*}
+        \left(\frac{\lambda_i}{\lambda} + i \sqrt{1 - \left(\frac{\lambda_i}{\lambda}\right)^2} \right) \left(\frac{\lambda_i}{\lambda} - i \sqrt{1 - \left(\frac{\lambda_i}{\lambda}\right)^2} \right) = 1.
+    \end{align*}
+    Also, $\Lambda/\lambda = \widetilde{\Lambda} = U_A + U_B$, then we have $\Lambda = \lambda (U_A + U_B)$. Thus, any Hermitiain is a linear combination of unitary matrices.
+    
+    \item By Polar decomposition, any matrix $A$ can be factores as $A = RU$, where $R$ is nonnegative self-adjoint matrix and $U$ is a unitary matrix. Now (a), $R = \lambda P (U_A + U_B) P^*$, and then $A = \lambda P (U_A + U_B) P^*U$, where $P, U_A, U_B, U$ are all unitary. Since if $A, B$ are unitary, then $AB$ is also unitary. Thus, $A$ can be written as a linear combination of unitary matrices.
+\end{enumerate}
+Thus, we have $\operatorname{span} {\rm U}(n) = \mathbb{C}^{n \times n}$.
+\end{proof}
+
+\begin{proof}[Second Proof of Exercise \ref{Aug_2017_6}(b)]
+For any matrix $A \in \mathbb{C}^{n \times n}$, let 
+\begin{align*}
+    A^+ = \frac{A + A^*}{2}, \quad A^{-} = \frac{A - A^*}{2i},
+\end{align*}
+then $A = A^+ + i A^{-}$. Also, $A^+$ and $A^{-}$ are all Hermitian. Then, by (a), $A$ can also be written as a linear combination of unitary matrices.
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Exercise \ref{Aug_2017_6}]
+Let $(,)$ be the Hilbert-Schmidt inner product on $\mathbb{C}^{n \times n}$, i.e. for $A, B \in \mathbb{C}^{n \times n}$, 
+\begin{align*}
+    A:B = \Tr\left(A^*B\right).
+\end{align*}
+Let $W = \operatorname{span} {\rm U}(n)$, then $W$ is a subspace of $\mathbb{C}^{n \times n}$. Then, we have
+\begin{align*}
+    W \oplus W^{\bot} = \mathbb{C}^{n \times n},
+\end{align*}
+where $W^{\bot} = \{T \in \mathbb{C}^{n \times n} | T:U = 0, U \in W\}$ is the annihilator of $W$. For any $T \in W^{\bot}$, by Polar decomposition, there exists a nonnegative symmetric matrix $R$ and a unitary matrix $U$ such that $T = UR$\cite{9}. Then,
+\begin{align*}
+    0 = T:U = UR:U = \Tr\left(R^*U^*U\right) = \Tr(R),
+\end{align*}
+which implies $R = 0$. Then, $T = 0$, i.e. $W^\bot = \{0\}$. Thus, $\operatorname{span} {\rm U}(n) = \mathbb{C}^{n \times n}$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
 
 
 
