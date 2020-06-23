@@ -942,7 +942,7 @@ Let $A \in \mathbb{C}^{n \times n}$ be an arbitrary matrix.
 
 \medskip
 
-\begin{exercise}
+\begin{exercise}\label{Aug_2017_2}
 Let $A$ and $B$ be two Hermitian complex matrices.
 \begin{enumerate}[label=(\alph*)]
     \item Prove that $\Tr(AB)$ is real. 
@@ -970,6 +970,21 @@ Let $A$ and $B$ be two Hermitian complex matrices.
         & = \Tr \left(P^*AP \Lambda\right) = \sum^n_{i=1} d_i \lambda_i > 0.
     \end{align*}
 \end{enumerate}
+\end{proof}
+
+\begin{proof}[Second Proof of Exercise \ref{Aug_2017_2}(b)]
+Since $A$ is positive, then $A$ is invertible, and its inverse is also positive. Indeed, this is obvious if we consider the eigenvalues of $A$ and $A^{-1}$. Also, 
+\begin{align*}
+    AB = A^{\frac{1}{2}} A^{\frac{1}{2}} B A^{\frac{1}{2}} A^{-\frac{1}{2}},
+\end{align*}
+then $AB$ is similar with $A^{\frac{1}{2}} B A^{\frac{1}{2}}$. For any $x \in \mathbb{R}^n$, since $A^{\frac{1}{2}}$ is also Hermitian and $B$ is positive, then
+\begin{align*}
+    \left(A^{\frac{1}{2}} B A^{\frac{1}{2}}x, x\right) = \left(  B A^{\frac{1}{2}}x, \left(A^{\frac{1}{2}}\right)^* x\right) = \left(  B A^{\frac{1}{2}}x, A^{\frac{1}{2}} x\right) > 0,
+\end{align*}
+and hence $A^{\frac{1}{2}} B A^{\frac{1}{2}}$ is positive. Since similar matrix has the same trace, thus,
+\begin{align*}
+    \Tr(AB) = \Tr \left(A^{\frac{1}{2}} B A^{\frac{1}{2}} \right) > 0.
+\end{align*}
 \end{proof}
 
 \medskip
@@ -1024,11 +1039,112 @@ Let $A$ be an $n \times n$ matrix with $n$ distinct nonzero eigenvalues. Conside
 \end{enumerate}
 \end{proof}
 
+\medskip
 
+\begin{exercise}{\rm *}
+Let $V$ be a real inner product vector space of finite dimension and let $W \subset V$ be a linear subspace. Suppose that $S$ is a positive operator on $V$. Let $P$ be the orthogonal projection on $W$. Prove that $PS$ is diagonalizable.
+\end{exercise}
+\begin{proof}
+Since $P$ is orthogonal projection, then for any $x \in V$, $x$ can be written as $x = Px + x^\bot$, where $Px \in W$ and $x_\bot \in W^\bot$. Then, for any $x, y \in V$,
+\begin{align*}
+    (Px, y - Py) = 0 = (x - Px, Py),
+\end{align*}
+which implies 
+\begin{align*}
+    (Px, y) = (Px, Py) = (x, Py),
+\end{align*}
+and hence $P = P^*$.
 
+Now, since $S$ is positive and
+\begin{align*}
+    PS = S^{-\frac{1}{2}} S^{\frac{1}{2}} P S^{\frac{1}{2}} S^{\frac{1}{2}},
+\end{align*}
+then $PS$ is similar to $S^{\frac{1}{2}} P S^{\frac{1}{2}}$. Also,
+\begin{align*}
+    \left(S^{\frac{1}{2}} P S^{\frac{1}{2}} \right)^* = S^{\frac{1}{2}} P S^{\frac{1}{2}},
+\end{align*}
+then $S^{\frac{1}{2}} P S^{\frac{1}{2}}$ is symmetric and then diagonalizable. Thus, $PS$ is also diagonalizable.
+\end{proof}
 
+\medskip
 
-
+\begin{exercise}
+Let $R \in O(4)$.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that $R$ admits an invariant two dimensional subspace $W$.
+    
+    \item Prove that if $\det R > 0$, then it is similar to a matrix of the form 
+    \begin{align*}
+        \begin{pmatrix}
+            a & b & 0 & 0 \\
+            -b & a & 0 & 0\\
+            0 & 0 & c & d \\
+            0 & 0 & -d & c\\ 
+        \end{pmatrix},
+    \end{align*}
+    with $a, b, c, d \in \mathbb{R}$ and $a^2 + b^2 = c^2 + d^2 = 1$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Since $R \in O(4) \subset {\rm GL}(4, \mathbb{R})$, then $RR^T = R^T R = I$ and hence $R$ is unitarily diagonalizable\footnote{Normal matrix is unitarily diagonalizable.}. Suppose the characteristic polynomial for $R$ is 
+    \begin{align*}
+        p_R(\lambda) = (\lambda - \lambda_1)^{d_1} \cdots (\lambda - \lambda_4)^{d_4},
+    \end{align*}
+    where $d_i \in \{0, 1, 2, 3, 4\}$ and $\sum^4_{i=1} d_i = 4$. Also, since $R$ is diagonalizable, then 
+    \begin{align*}
+        \dim N_{R-\lambda_i I} = d_i, i = 1,2,3,4
+    \end{align*}
+    Then, no matter how many eigenvalues $R$ has, $R$ always admits an invariant subspace of dimension $2$. Indeed,
+    \begin{enumerate}[label=\arabic*)]
+        \item If $p_R = \prod^4_{i=1} (\lambda - \lambda_i)$, then each eigenvalue has an eigenvector $x_i, i = 1,2,3,4$. Choose any two vectors $x_j, x_k \in \{x_i\}^4_{i=1}$ and then $\operatorname{span}\{x_j, x_k\}$ is an invariant subspace.
+        
+        \item If $p_R = (\lambda - \lambda_1)(\lambda - \lambda_2)(\lambda - \lambda_3)^2$, then $\dim N_{\lambda - \lambda_3 I} = 2$, which is an invariant subspace. 
+        
+        \item For any higher multiplicity for eigenvalue, it is similar to 2) and we can always find an invariant subspace.
+    \end{enumerate}
+    
+    \item For any eigenvalue $\lambda$ of $R$ and its eigenvector $x$, we have
+    \begin{align*}
+        (Rx, Rx) = \lambda^2 (x, x) = (R^*Rx, x) = (x,x),
+    \end{align*}
+    which implies $|\lambda| = 1$.
+    \begin{enumerate}[label=\arabic*)]
+        \item If all $\lambda \in \mathbb{R}$, then the number of eigenvalue $-1$ is even. Then, let $b = d = 0$, then $R$ is similar to 
+        \begin{align*}
+            \begin{pmatrix}
+                a & 0 & 0 & 0 \\
+                0 & a & 0 & 0\\
+                0 & 0 & c & 0 \\
+                0 & 0 & 0 & c\\ 
+            \end{pmatrix},
+        \end{align*}
+        where $a = \pm 1$ and $c = \pm 1$.
+        
+        \item If all $\lambda \notin \mathbb{R}$, suppose $\lambda = a + ib$, then $a - ib$ is also an eigenvalue. Similarly, assume another two eigenvalues are $c \pm id$. Then, under certain basis $\mathcal{B}$,
+        \begin{align*}
+            [R]_{\mathcal{B}} = \begin{pmatrix}
+                a & b & 0 & 0 \\
+                -b & a & 0 & 0\\
+                0 & 0 & c & d \\
+                0 & 0 & -d & c\\ 
+            \end{pmatrix},
+        \end{align*}
+        and $a^2 + b^2 = c^2 + d^2 = 1$, since $\det R = 1$.
+        
+        \item If $\lambda_1 \in \mathbb{R}$ and $\lambda_2 \notin \mathbb{R}$, then let $d = 0$ and choose certain certain basis $\mathcal{B}$,
+        \begin{align*}
+            [R]_{\mathcal{B}} = \begin{pmatrix}
+                a & b & 0 & 0 \\
+                -b & a & 0 & 0\\
+                0 & 0 & c & 0 \\
+                0 & 0 & 0 & c\\ 
+            \end{pmatrix},
+        \end{align*}
+        where $a^2 + b^2 = 1$ and $c = \pm 1$.
+    \end{enumerate}
+\end{enumerate}
+\end{proof}
 
 
 
