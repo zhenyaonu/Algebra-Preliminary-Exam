@@ -384,7 +384,7 @@ Then, with $B = \frac{A + \bar{A}}{2}$, we have
     & \leq \frac{1}{2} \max_{x \neq 0} \frac{(x, Ax)}{(x,x)} + \frac{1}{2} \max_{x \neq 0} \frac{(x, \bar{A}x)}{(x,x)} \\
     & \leq \max_{x \neq 0} \frac{(x, Ax)}{(x,x)},
 \end{align*}
-where in the last step we used the fact that $\max \frac{(x, Ax)}{(x,x)} = \max \frac{(x, \Bar{x}x)}{(x,x)}$, since $\Bar{A}$ is conjugate transpose of $A$ and it has the same eigenvalues as $A$. Thus, $\max \mu \leq \max \lambda$.
+where in the last step we used the fact that $\max \frac{(x, Ax)}{(x,x)} = \max \frac{(x, \Bar{A}x)}{(x,x)}$, since $\Bar{A}$ is conjugate transpose of $A$ and it has the same eigenvalues as $A$. Thus, $\max \mu \leq \max \lambda$.
 \end{proof}
 
 \begin{proof}[Second Proof of Exercise \ref{aug_2018_1}]
@@ -597,7 +597,6 @@ For an invertible matrix $P \in \mathbb{R}^{n \times n}$, let $T_P: \mathbb{R}^{
 
 
 \newpage
-
 \section{May 2018 Exam}
 
 \begin{exercise}
@@ -871,8 +870,8 @@ where $\|B\| = \sqrt{\Tr (B B^*)}$ denotes the Hilbert-Schmidt norm of $B$.\\
 \end{enumerate}
 \end{proof}
 
-\newpage
 
+\newpage
 \section{August 2017 Exam}
 
 {\bf Some notations:} Given any linear transformation $T$, its transpose is denoted by $T^t$, and its adjoint with respect to an identified inner product is represented by $T^*$. Similarly, $A^t$ denotes the transpose of a matrix $A$, while $A^*$ denotes its adjoint, i.e. its conjugate transpose. The classical ajoint (or adjugate) of a square matrix is the transpose of the cofactor matrix $\operatorname{cof}(A)$ and is denoted by $\operatorname{adj}(A)$. A square complex matrix is said to be positive (resp. nonnegative), when $A$ is Hermitian (self-adjoint) and for all nonzero $x \in \mathbb{C}^n$, the standard inner product $(Ax, x) > 0$ (resp. nonnegative). The Hilbert-Schmidt inner product of two complex matrices $A, B \in \mathbb{C}^{n \times m}$ is defined by $A : B = \Tr \left(AB^*\right)$.
@@ -1195,13 +1194,168 @@ which implies $R = 0$. Then, $T = 0$, i.e. $W^\bot = \{0\}$. Thus, $\operatornam
 \end{proof}
 
 
+\newpage
+\section{April 2017 Exam}
 
+{\bf Some notations:} Given any linear transformation $T$, its transpose is denoted by $T^t$, and its adjoint with respect to an identified inner product is represented by $T^*$. Similarly, $A^t$ denotes the transpose of a matrix $A$, while $A^*$ denotes its adjoint, i.e. its conjugate transpose. The classical ajoint (or adjugate) of a square matrix is the transpose of the cofactor matrix $\operatorname{cof}(A)$ and is denoted by $\operatorname{adj}(A)$. A square complex matrix is said to be positive (resp. nonnegative), when $A$ is Hermitian (self-adjoint) and for all nonzero $x \in \mathbb{C}^n$, the standard inner product $(Ax, x) > 0$ (resp. nonnegative). The Hilbert-Schmidt inner product of two complex matrices $A, B \in \mathbb{C}^{n \times m}$ is defined by $A : B = \Tr \left(AB^*\right)$.
 
+\medskip
 
+\begin{exercise}
+Assume that $A = \left[a_{jk}\right] \in \mathbb{C}^{n \times n}$ is a nonnegative rank $1$ matrix . Prove that there exists a nonzero $v = (v_1, \cdots, v_n) \in \mathbb{C}^{n}$ such that
+\begin{align*}
+    a_{jk} = v_j \overline{v_k}, \quad \forall j,k \in \{1, \cdots, n\}.
+\end{align*}
+\end{exercise}
+\begin{proof}
+Since $A$ is nonnegative matrix, then it is a Hermitian matrix, then hence it can be unitarily diagonalized, that is, there exists a unitary matrix $P$ such that $A = P \Lambda P^*$, where $\Lambda$ is diagonal. Also, since $A$ is rank $1$, then there is only one diagonal entry $d$ in $\Lambda$, and $d \geq 0$. Suppose, $d$ appears on $i$th row, then
+\begin{align*}
+    A & = P \Lambda P^* \\
+    & = \begin{pmatrix}
+        p_{11} & \cdots & p_{1n} \\
+        \vdots & \ddots & \vdots \\
+        p_{n1} & \cdots & p_{nn}
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 &  &  &  & \\
+        & \ddots &  &  & \\
+        &  & d &  & \\ 
+        &  &  & \ddots & \\
+        &  &  &  & 0 
+    \end{pmatrix}
+    \begin{pmatrix}
+        \overline{p_{11}} & \cdots & \overline{p_{n1}} \\
+        \vdots & \ddots & \vdots \\
+        \overline{p_{1n}} & \cdots & \overline{p_{nn}}
+    \end{pmatrix} \\
+    & = \begin{pmatrix}
+        p_{11} & \cdots & p_{1n} \\
+        \vdots & \ddots & \vdots \\
+        p_{n1} & \cdots & p_{nn}
+    \end{pmatrix} 
+    \begin{pmatrix}
+        0 & 0 & \cdots & 0 \\
+        \vdots & \vdots &  & \vdots \\
+        d\overline{p_{1i}} & d\overline{p_{2i}} & \cdots & d\overline{p_{ni}} \\
+        \vdots & \vdots &  & \vdots \\
+        0 & 0 & \cdots & 0
+    \end{pmatrix} \\
+    & = \begin{pmatrix}
+        d p_{1i}\overline{p_{1i}} & \cdots & d p_{1i} \overline{p_{ni}} \\
+        \vdots & \ddots & \vdots \\
+        d p_{ni}\overline{p_{1i}} & \cdots & d p_{ni} \overline{p_{ni}}
+    \end{pmatrix}.
+\end{align*}
+Let $v_j = \sqrt{d}p_{ji}$ for $j = 1, \cdots, n$, then we have 
+\begin{align*}
+    a_{jk} = d p_{ji}\overline{p_{ki}} = v_i \overline{v_k}.
+\end{align*}
+\end{proof}
 
+\medskip
 
+\begin{exercise}{\rm *}
+Let $O(n)$ be the set of orthogonal matrices in $\mathbb{R}^{n \times n}$. We define the set of special orthogonal matrices by
+\begin{align*}
+    SO(n) = \left\{R \in O(n) \subset \mathbb{R}^{n \times n} | \det R = 1 \right\}.
+\end{align*}
+\begin{enumerate}[label=(\alph*)]
+    \item Let $W = \operatorname{span} SO(2)$. Find a basis for $W$.
+    
+    \item Find $W^\bot$ with respect to the Hilbert-Schmidt inner product on $\mathbb{R}^{2 \times 2}$.
+    
+    \item Prove that for any matrix $A \in \mathbb{R}^{2 \times 2}$, there exist orthogonal matrices $R_1, R_2 \in O(2)$ and nonnegative scalars $\alpha_1, \alpha_2 \in \mathbb{R}$ such that
+    \begin{align*}
+        A = \alpha_1 R_1 + \alpha_2 R_2.
+    \end{align*}
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Let $A \in W$ and set $A = \begin{pmatrix} a & b \\ c & d
+    \end{pmatrix}$, then we have following equations
+    \begin{align*}
+        \begin{cases}
+            ac + bd = 0, \\
+            ad - bc = 1, \\
+            a^2 + b^2 = c^2 + d^2 = 1,
+        \end{cases}
+    \end{align*}
+    which implies that
+    \begin{align*}
+        b = \pm \sqrt{1 - a^2}, \quad a = d, \quad c = -b.
+    \end{align*}
+    Now we can choose
+    \begin{align*}
+        B_1 = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix},\quad 
+        B_2 = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix},
+    \end{align*}
+    and then $B_1$ is linearly independent with $B_2$. For any $A \in W$, $A$ has the form of
+    \begin{align*}
+        \begin{pmatrix} 
+            a & \pm \sqrt{1 - a^2} \\ 
+            \mp \sqrt{1 - a^2} & a
+        \end{pmatrix} = a B_1 \pm \sqrt{1 - a^2} B_2,
+    \end{align*}
+    which implies that $\{B_1, B_2\}$ is a basis for $W$.
+    
+    \item If $A \in W^\bot$, then $\Tr(AE_i^*) = 0, i = 1, 2$. Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, then 
+    \begin{align*}
+        \Tr\left(AE_1^*\right) & = a + d = 0, \\
+        \Tr\left(AE_2^*\right) & = c - b = 0.
+    \end{align*}
+    Thus, we have
+    \begin{align*}
+        W^\bot = \left\{\begin{pmatrix} a & b \\ b & -a \end{pmatrix} \Bigg| \,\, a, b \in \mathbb{R} \right\}.
+    \end{align*}
+    
+    \item From (a), we have
+    \begin{align*}
+        W = \left\{\begin{pmatrix} a & b \\ -b & a \end{pmatrix} \Bigg| \,\, a, b \in \mathbb{R} \right\}.
+    \end{align*}
+    Then, if $A \in W \cap W^\bot$, then $A = 0$, which implies $W \cap W^\bot = \{0\}$. Since $\dim W + \dim W^\bot = 2$, then we have $\mathbb{R}^{2 \times 2} = W \oplus W^\bot$.
+    
+    Then, for any $A \in \mathbb{R}^{2 \times 2}$, there exists $W_1 \in W$ and $W_2 \in W^\bot$ such that $A = W_1 + W_2$. Let $W_1 = \begin{pmatrix} x_1 & y_1 \\ y_1 & -x_1 \end{pmatrix}$ and $W_2 = \begin{pmatrix} x_2 & y_2 \\ y_2 & -x_2 \end{pmatrix}$, then $\frac{W_1}{\sqrt{x_1^2 + y_1^2}}$ and $\frac{W_2}{\sqrt{x_2^2 + y_2^2}}$ are an orthogonal matrix, denoted by $R_1, R_2$. Thus, we have
+    \begin{align*}
+        A = \alpha_1 R_1 + \alpha_2 R_2,
+    \end{align*}
+    where $\alpha_1 = \sqrt{x_1^2 + y_1^2}, \alpha_2 = \sqrt{x_2^2 + y_2^2}$.
+\end{enumerate}
+\end{proof}
 
+\medskip
 
+\begin{exercise}{\rm *}
+For a Hermitian matrix $A \in \mathbb{C}^{n \times n}$, let $\lambda_j(A)$ denote the $j$-th eigenvalue of $A$ in increasing order, i.e. $\lambda_1(A) \leq \cdots \leq \lambda_n(A)$. Let $A$ and $B$ be two Hermitian matrices. Use the min-max principle to prove that if $j + k > n$, then
+\begin{align*}
+    \lambda_{j+k-n} (A + B) \leq \lambda_j(A) + \lambda_k(B).
+\end{align*}
+\end{exercise}
+\begin{proof}
+By min-max principle, there exists $W \subset \mathbb{C}^n, \dim = j$ and $U \subset \mathbb{C}^n, \dim = k$ such that
+\begin{align*}
+    \lambda_j(A) = \max_{x \in W} \frac{(Ax, x)}{(x,x)}, \quad \lambda_k(A) = \max_{x \in U} \frac{(Bx, x)}{(x,x)}
+\end{align*}
+Also, since $W + U \subset \mathbb{C}^n$, then
+\begin{align*}
+    \dim (W \cap U) = \dim W + \dim U - \dim (W + U) \geq j + k - n > 0.
+\end{align*}
+Then there exists a subspace $S$ of $W \cap U$ such that $\dim S = j + k - n$. For any $y \in S$, we have
+\begin{align*}
+    \frac{((A+B)y, y)}{(y, y)} & = \frac{(Ay, y)}{(y, y)} + \frac{(By, y)}{(y, y)} \\
+    & \leq \max_{x \in W} \frac{(Ax, x)}{(x, x)} + \max_{x \in U} \frac{(Bx, x)}{(x, x)} \\
+    & = \lambda_j(A) + \lambda_k(B),
+\end{align*}
+and thus, we have
+\begin{align*}
+    \lambda_{j+k-n} (A + B) & = \min_{\dim Q=j+k-n} \max_{x\in Q} \frac{((A+B)x,x)}{(x,x)} \\
+    & \leq \max_{x\in S} \frac{((A+B)x,x)}{(x,x)} \\
+    & \leq \max_{x \in W} \frac{(Ax, x)}{(x, x)} + \max_{x \in U} \frac{(Bx, x)}{(x, x)} \\
+    & = \lambda_j(A) + \lambda_k(B).
+\end{align*}
+\end{proof}
+
+\medskip
 
 
 
