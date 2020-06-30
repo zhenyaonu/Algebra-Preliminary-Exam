@@ -1357,6 +1357,102 @@ and thus, we have
 
 \medskip
 
+\begin{exercise}\label{April_2017_4}
+Let $V_n$ be the vector space of polynomials in $\mathbb{C}[x]$ of degree less than or equal to $n$. Let the operator $T: V_n \to V_n$ be defined by $T(p) = p - p'$, where $p'$ denotes the derivative of $p$.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that $T$ is invertible and show that $T^{-1}$ is a polynomial in $T$.
+    
+    \item{\rm *} Find the Jordan form of $T^{-1}$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item For $p = a_0 + a_1x + \cdots + a_nx^n$, we have
+    \begin{align*}
+        T(p) = (a_0 - a_1) + (a_1 - a_2)x + (a_2 - 2a_3)x^2 + \cdots + (a_{n-1} - na_n)x^{n-1} + a_n x^n.
+    \end{align*}
+    Then, under basis $\mathcal{B} = \{1, x, \cdots, x^n\}$, 
+    \begin{align*}
+        [T]_{\mathcal{B}} = \begin{pmatrix}
+            1 & -1 & 0 & \cdots & 0 \\
+            0 & 1 & -2 & \cdots & 0 \\
+            0 & \ddots & 1 & \ddots & \vdots \\
+            \vdots & \vdots & \ddots & \ddots & -n \\
+            0 & \cdots & \cdots & 0 & 1
+        \end{pmatrix}.
+    \end{align*}
+    Since $\det [T]_{\mathcal{B}} = 1$, then $T$ is invertible. 
+    
+    Also, the characteristic polynomial for $[T]_{\mathcal{B}}$ is $p_T(\lambda) = (\lambda - 1)^{n+1}$, then by Cayley-Hamilton theorem, $(T - I)^{n+1} = 0$, which is equivalent to 
+    \begin{align*}
+       \sum^{n+1}_{i=0}\binom{n+1}{i} T^{i} (-1)^{n+1-i} I^{n+1-i} = 0.
+    \end{align*}
+    Since $T$ is invertible, thus we have
+    \begin{align*}
+        T^{-1} = \sum^{n+1}_{i=0}\binom{n+1}{i} (-1)^{n+1-i} T^{i-1},
+    \end{align*}
+    which is a polynomial of $T$.
+    
+    \item Since $(T - I)^{n+1} = 0$ and $(T - I)^{n} \neq 0$, then the minimal polynomial of $T$ is $m_T(\lambda) = (\lambda - 1)^{n+1} = 0$. Then $T$ has an eigenvector $v$ such that $\left\{v, Tv, T^2v, \cdots, T^nv \right\}$ form a basis for $V_n$. 
+    
+    Also, $(T^{-1})^n$ is invertible, then
+    \begin{align*}
+        \left\{(T^{-1})^nv, (T^{-1})^nTv, (T^{-1})^nT^2v, \cdots, (T^{-1})^nT^nv \right\} = \left\{v, (T^{-1})v, (T^{-1})^2v, \cdots, (T^{-1})^nv \right\}
+    \end{align*}
+    also form a basis for $V_n$. Then, the charasteristic polynomial and minimal polynomial of $T^{-1}$ are the same. Also, for any eigenvector $v$ of $T$, we have $Tv = v$, which imlplies $T^{-1}v = v$. And then $1$ is also eigenvalue of $T^{-1}$. Then $T^{-1}$ has the charasteristic polynomial as $T$, which is $(\lambda - 1)^{n+1}$. Thus, the Jordan form of $T^{-1}$ is 
+    \begin{align*}
+        J_{T^{-1}} = \begin{pmatrix}
+            1 & 1 &  &  & \\
+              & 1 & 1 &  & \\
+              &   & \ddots & \ddots \\
+              &   &        &  1 & 1 \\
+              &   &        &    & 1
+        \end{pmatrix}.
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{proof}[Second Proof of Exercise \ref{April_2017_4}(b)]
+Since $(T - I)^n \neq 0$, then the minimal polynomial for $T$ is $m_T = (\lambda - 1)^{n+1}$.
+
+Let $N = T^{-1} - I$. Since $T$ is invertible, then $(T - I)^{n+1} = 0$ implies $T^{n+1}(I - T^{-1})^{n+1} = 0$, which is equivalent to that $(I - T^{-1})^{n+1} = $. Then $N^{n+1} = 0$, and hence the minimal polynomial of $T^{-1}$ is $m_{T^{-1}} = (\lambda - 1)^{n+1} = 0$. Thus, the Jordan form of $T^{-1}$ is 
+\begin{align*}
+    J_{T^{-1}} = \begin{pmatrix}
+        1 & 1 &  &  & \\
+        & 1 & 1 &  & \\
+        &   & \ddots & \ddots \\
+        &   &        &  1 & 1 \\
+        &   &        &    & 1
+    \end{pmatrix}.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{exercise}\label{April_2017_5}
+Assume that $V$ is a finite dimensional inner product space and that $T \in \mathscr{L}(V, V)$. Prove that $T$ is normal if and only if there exists a unitary operator $U \in \mathscr{L}(V, V)$ such that $T^* = UT$.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item ($\Rightarrow$) If $T$ is normal, then $T$ can be unitarily diagonalizable, that is, there exists a unitary matrix $P$ such that $T = PDP^*$, where $D$ is diagonal. And then $T^* = PD^*P^* = T$. Let $U = I$ be a unitary matrix, then $T^* = UT$.
+    
+    \item ($\Leftarrow$) If $T^* = UT$, where $U$ is a unitary matrix. Then, $TT^* = (UT)^* UT = T^* T$, and thus $T$ is normal.
+\end{enumerate}
+\end{proof}
+
+\begin{proof}[Second Proof of Exercise \ref{April_2017_5}(a)]
+By the Polar decomposition, then there exists a unitary operator $P$
+\end{proof}
+
+
+
+
+
+
+
+
+
+
 
 
 
