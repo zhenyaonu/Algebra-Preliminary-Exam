@@ -1434,20 +1434,134 @@ Assume that $V$ is a finite dimensional inner product space and that $T \in \mat
 \end{exercise}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
-    \item ($\Rightarrow$) If $T$ is normal, then $T$ can be unitarily diagonalizable, that is, there exists a unitary matrix $P$ such that $T = PDP^*$, where $D$ is diagonal. And then $T^* = PD^*P^* = T$. Let $U = I$ be a unitary matrix, then $T^* = UT$.
+    \item ($\Rightarrow$) By the Polar decomposition, then there exists a unitary operator $U$ and a nonnegative Hermitiain matrix $R$ such that $T = UR$. Since $T$ is normal, then $TT^* = T^*T$ implies
+    \begin{align*}
+        R R^* = R^2 = U R^* R U^*= (U R U^*)^2.
+    \end{align*}
+    Since $R$ is nonnegative, then it has unique square root, and hence $R = U R U^*$. Then, $T^* = R^* U^* = R U^* = U^* R = (U^*)^2 T$. Let $\widetilde{U} = (U^*)^2$, then it is obvious that $\widetilde{U}$ is also unitray, and thus, $T^* = \widetilde{U} T$.
     
     \item ($\Leftarrow$) If $T^* = UT$, where $U$ is a unitary matrix. Then, $TT^* = (UT)^* UT = T^* T$, and thus $T$ is normal.
 \end{enumerate}
 \end{proof}
 
-\begin{proof}[Second Proof of Exercise \ref{April_2017_5}(a)]
-By the Polar decomposition, then there exists a unitary operator $P$
+\medskip
+
+\begin{proof}[Second Proof of Exercise \ref{April_2017_5}(a)]{\rm *}
+Since $T$ is normal, then for any $v \in V$,
+\begin{align*}
+    \|Tv\|^2 = (Tv, Tv) = \left(v, T^*Tv\right) = \left(v, TT^*v\right) = \left(T^*v, T^*v\right) = \|T^*v\|^2,
+\end{align*}
+which implies $N_T = N_{T^*}$. 
+
+For any $w \in R_T$, there exists $x \in V$ such that $Tx = w$. For $v \in N_{T^*}$, we have
+\begin{align*}
+    (w, v) = (Tx, v) = (x, T^*v) = 0,
+\end{align*}
+which implies $N_{T^*} \subset R_T^\bot$. On the other hand, for any $y \in R_T^\bot$ and any $v \in V$, we have $Tv \in R_T$ and then
+\begin{align*}
+    0 = (y, Tv) = (T^*y, v).
+\end{align*}
+Then $T^*y = 0$, which implies $y \in N_{T^*}$ and hence, $R_T^\bot \subset N_{T^*}$. Thus, $R_T^\bot = N_{T^*}$.
+
+By $V = R_T \oplus R_T^\bot$, we have $V = R_T \oplus N_{T^*}$. Then for any $v \in V$, there exists unique $x \in V$ and $y \in N_{T^*}$ such that $v = Tx + y$, where $Tx \in R_T$.
+
+Now we define $U \in \mathscr{L}(V, V)$ by
+\begin{align*}
+    Uv = T^* x + y,
+\end{align*}
+then for any $v \in V$, since $Tv = Tv + 0$, then we have
+\begin{align*}
+    UTv = T^*v + 0 = T^*v,
+\end{align*}
+that is $T^* = UT$.
+
+It remains to show that $U$ is unitary. For any $v \in V$, $v$ can be written as $v = Tx + y$, $y \in N_{T^*}$. Then,
+\begin{align*}
+    (Uv, Uv) & = (T^* x + y, T^* x + y) \\
+    & = (T^*x, T^*x) + (T^*x, y) + (y, T^*x) + (y, y) \\
+    & = (T^*x, T^*x) + (y, y) \\
+    & = (x, TT^*x) + (y,y) \\
+    & = (x, T^*Tx) + (y,y) \\
+    & = (Tx, Tx) + (y,y) \\
+    & = (Tx, Tx) + (Tx, y) + (y, Tx) + (y,y) \\
+    & = (Tx + y, Tx + y) = (v, v),
+\end{align*}
+and thus $U$ is unitary.
 \end{proof}
 
+\medskip
 
+\begin{proof}[Third Possible Proof of Exercise \ref{April_2017_5}(a)]
+If $T$ is normal, then $T$ can be unitarily diagonalizable, that is, there exists a unitary matrix $P$ such that $T = PDP^*$, where $D$ is diagonal. 
+\begin{enumerate}[label=\arabic*)]
+    \item If eigenvalues of $T$ are all real numbers, then $D$ is diagonal matrix with real diagonal entries, and hence $T^* = PD^*P^* = T$. Let $U = I$ be a unitary matrix, then $T^* = UT$.
+    
+    \item If eigenvalues of $T$ has complex numbers, denoted by $a + ib$, then there is another eigenvalue $a - ib$. For eigenvalues $a \pm ib$, let matrix $\widetilde{T} = \begin{pmatrix} a+ib & 0 \\ 0 & a-ib \end{pmatrix}$ and $\widetilde{U} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$, then we have 
+    \begin{align*}
+        \widetilde{U} \widetilde{T} \widetilde{U}^* = \widetilde{T}^* = \begin{pmatrix} a-ib & 0 \\ 0 & a+ib \end{pmatrix}
+    \end{align*}
+    Then, for complex eigenvalues, we could choose $2 \times 2$ matrix $\widetilde{U}$ in diagonal block in $U$, and for real eigenvalues, we could choose $1$ in diagonal entry in $U$. Thus, we have $D^* = U D U^*$. From here, I have no ideas right now.
+\end{enumerate}
+\end{proof}
 
+\medskip
 
-
+\begin{exercise}
+Suppose $A \in \mathbb{R}^{n \times n}$ is anti-symmetric, i.e. $A^T = - A$ and $B \in \mathbb{R}^{n \times n}$ is symmtric, i.e. $B^T = B$.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that if $n$ is even, then $\operatorname{cof}(A):B = 0$.
+    
+    \item Prove that if $n$ is even and $B$ is of rank $1$, then $\det(A + B) = \det A$. \\
+    {\bf Hint:} You can use that the determinant function is $n$-linear in matrix rows.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item For $A \in \mathbb{R}^{n \times n}$ and $n$ is even, then we have
+    \begin{align*}
+        \operatorname{cof}(A)_{ij} = - \operatorname{cof}(A)_{ij}.
+    \end{align*}
+    Indeed, observing simple $4 \times 4$ anti-symmetric matrix would gives us this result. Then, $\operatorname{cof}(A)^T = - \operatorname{cof}(A)$. Then, for symmetric matrix $B \in \mathbb{R}^{n \times n}$, then we have
+    \begin{align*}
+        \Tr(\operatorname{cof}(A) B^*) = \Tr(B \operatorname{cof}(A)^T) = \Tr(- B \operatorname{cof}(A)^T) = - \Tr(\operatorname{cof}(A) B^*),
+    \end{align*}
+    which implies $\operatorname{cof}(A):B = \Tr(\operatorname{cof}(A) B^*) = 0$.
+    
+    \item Since $B$ is symmetric, then $B$ is unitarily diagonalizable, that is, there exists a unitary matrix $U$ such that $B = U \Lambda U^*$, where $\Lambda$ is diagonal. Also, since $\operatorname{rank}(B) = 1$, then there is only one diagonal entry in $\Lambda$, denoted by $\lambda_1$.
+    
+    Now, let $\widetilde{A} = U^*AU$, then
+    \begin{align*}
+        \det(A + B) & = \det\left(U^*(A + B)U\right) \\
+        & = \det \left(U^*AU + \Lambda \right) \\
+        & = \det (\widetilde{A} + \Lambda),
+    \end{align*}
+    where
+    \begin{align*}
+        \Lambda = \begin{pmatrix} 
+            \lambda_1 &  &  &  \\
+            & 0 &  &  \\
+            &  & \ddots & \\
+            &  &  & 0
+        \end{pmatrix},
+    \end{align*}
+    and $K$ is also anit-symmetric. Also, $\widetilde{A} + \Lambda$ has the form 
+    \begin{align*}
+        \begin{pmatrix} 
+            \lambda_1 & a_{12} & \cdots & a_{1n} \\
+            -a_{12} & 0 & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            -a_{1n} & -a_{2n} & \cdots & 0
+        \end{pmatrix},
+    \end{align*}
+    then we have
+    \begin{align*}
+        \det(A + B) & = \det (\widetilde{A} + \Lambda) \\
+        & = \lambda_1 \operatorname{cof}(\widetilde{A} + \Lambda)_{11} + \det \widetilde{A} \\
+        & = 0 + \det \widetilde{A} = \det A.
+    \end{align*}
+    Indeed, from (a), we could know that for $n \times n$ anti-symmetric matrix $A$, $\operatorname{cof}(A)_{ii} = 0$, and $\operatorname{cof}(\widetilde{A} + \Lambda)_{11} = \operatorname{cof}(\widetilde{A})$.
+\end{enumerate}
+\end{proof}
 
 
 
