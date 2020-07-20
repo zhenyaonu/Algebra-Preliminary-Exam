@@ -1567,9 +1567,232 @@ Suppose $A \in \mathbb{R}^{n \times n}$ is anti-symmetric, i.e. $A^T = - A$ and 
 \newpage
 \section{August 2016 Exam}
 
-\begin{exercise}
+\begin{exercise}{\rm *}
 Consider the vector space ${\rm M}_{n\times n}(\mathbb{R})$ of $n \times n$ matrices. Consider the linear map $T: {\rm M}_{n\times n}(\mathbb{R}) \to {\rm M}_{n\times n}(\mathbb{R})$ given by $T(A) = A^T$ for all $A \in {\rm M}_{n\times n}(\mathbb{R})$. Here $A^T$ denotes the transpose of $A$.
+\begin{enumerate}[label=(\alph*)]
+    \item Find the characteristic polynomial and minimal polynomial of $T$.
+    
+    \item Find the Jordan form of $T$.
+\end{enumerate}
 \end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Since $T(A) = A^T$, then $T^2(A) = A$, which implies $T^2 = I$. Then the polynomial $\lambda^2 - 1$ annihilates $T$ \footnote{We cannot assume that $\lambda^2 - 1$ is the characteristic polynomial yet.}. Also, since $T \neq \pm I$, then $\lambda - 1$ and $\lambda + 1$ is not minimal polynomial. Thus, the minimal polynomial of $T$ is $m_T(\lambda) = \lambda^2 - 1$.
+    
+    Consider the space $W$ of $n \times n$ real symmetric matrices, then $T(A) = A$ for $A \in W$. Since $\dim W = n(n+1)/2$, then $T$ has eigenvalue $1$ with multiplicity $n(n+1)/2$. 
+    
+    Now consider the space $V$ of $n \times n$ real skew-symmetric matrices\footnote{By direct-sum decomposition, any matrix can be written as a sum of a symmetric matrix and a skew-symmetric matrices, that is $A = (A + A^T)/2 + (A - A^T)/2$.}, then $T(A) = -A$ for $A \in V$. Since $\dim V = n(n-1)/2$, then $T$ has eigenvalue $-1$ with multiplicity $n(n-1)/2$. 
+    
+    Thus, the characteristic polynomial of $T$ is 
+    \begin{align*}
+        p_T(\lambda) = (\lambda - 1)^{\frac{n(n+1)}{2}} (\lambda + 1)^{\frac{n(n-1)}{2}}.
+    \end{align*}
+    
+    \item Now, since $W \cap V = \{0\}$ and $\dim W + \dim V = n^2$, then $W \oplus V = \mathbb{R}^{n^2}$. Then, $T$ is diagonalizable\footnote{Theorem 2 in Chapter 6, \textit{Linear Algebra}, Hoffman, K. and Kunze, R.A.}. Then, $\dim N_{T - I} = n(n+1)/2$ and $\dim N_{T + I} = n(n-1)/2$, which implies that the Jordan form of $T$ is
+    \begin{align*}
+        J_T = \begin{pmatrix}
+            1 & & & & & \\
+            & \ddots & & & & \\
+            & & 1 & & & \\
+            & & & -1 & & \\
+            & & & & \ddots & \\
+            & & & & & -1
+        \end{pmatrix},
+    \end{align*}
+    where $1$ appears $n(n+1)/2$ times and $-1$ appears $n(n-1)/2$ times.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\newpage
+\begin{exercise}\label{August_2016_2}
+Let $V$ be a finite dimensional vector space and $A: V \to V$ a linear map. Suppose $N_A = N_{A^2}$. Show that for any integer $m > 0$ we have $N_{A^m} = N_A$. (Here $N$ denotes the null space.)
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $x \in N_A$, then it is obvious that $A^m x = 0$ for any $m > 0$. Thus, $N_A \subset N_{A^m}$.
+    
+    \item Suppose $x \in N_{A^m}$. 
+    
+    If $m$ is even, then there exists $n \in \mathbb{N}$ such that $2n = m$. Then, 
+    $$\underbrace{(A^2) \cdots (A^2)}_{n} x = 0.$$ 
+    Since $N_A = N_{A^2}$, then 
+    $$A \underbrace{(A^2) \cdots (A^2)}_{n - 1} x = \underbrace{(A^2) \cdots (A^2)}_{n-1} A x = 0.$$ 
+    Continue this process and we can have $A^2x = 0$. Thus, $x \in N_A$ and hence $N_{A^m} \subset N_A$.
+    
+    If $m$ is odd, then there exists $n \in \mathbb{N}$ such that $2n + 1 = m$. Similarly, we have 
+    $$\underbrace{(A^2) \cdots (A^2)}_{n} A x = 0,$$ 
+    and continuing the similar process as before also gives $A^2x = 0$. Thus, $N_{A^m} \subset N_A$.
+\end{enumerate}
+Thus, we have $N_{A^m} = N_A$.
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Exercise \ref{August_2016_2}]
+We can also prove this by induction.
+
+For $k = 1$, the statement is true. Now suppose the statement is true for $k = m$. For any $x \in N_{A^{m+1}}$, we have $A^{m+1}x = 0$, which is equivalent to $A^m Ax = 0$. Since $N_{A^m} = N_A$, then $Ax \in N_A$, and hence $A^2x = 0$. By $N_A = N_{A^2}$, we have $x \in N_A$. Thus, $N_{A^{m+1}} \subset N_A$.
+
+On the other hand, for any $x \in N_A$, we have $A^{m+1}x = A^m Ax = 0$. Thus, $N_A \subset N_{A^{m+1}}$.
+
+Now we have $N_{A^{m+1}} = N_A$ and the statement is true for $k = m + 1$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Let $\{v_1, v_2, v_3\} \subset \mathbb{Z}^3$ be vectors with integer coordinates. Show that every vector in $\mathbb{Z}^3$ is a linear combination of the $v_i$ with integer coefficients if and only if the (Euclidean $3$-dimensional) volume of the parallelpiped $P$ they form is equal to $1$. The parallelpiped $P$ form by the $v_i$ is the set 
+\begin{align*}
+    P = \{c_1 v_1 + c_2 v_2 + c_3 v_3 \, | \, 0 \leq c_i \leq 1, \forall i = 1,2,3\}.
+\end{align*}
+\end{exercise}
+\begin{proof}
+Let $v_1 = (x_1, y_1, z_1), v_2 = (x_2, y_2, z_2), v_3 = (x_3, y_3, z_3)$, and $x_i, y_i, z_i$ are integers. The volume of $P$ is the absolute value of determinant of the matrix $D$, where $D$ is defined by
+\begin{align*}
+    D = \begin{pmatrix}
+        x_1 & x_2 & x_3 \\
+        y_1 & y_2 & y_3 \\
+        z_1 & z_2 & z_3
+    \end{pmatrix}.
+\end{align*}
+\begin{enumerate}[label=(\alph*)]
+    \item $\Rightarrow$) If every vector in $\mathbb{Z}^3$ is a linear combination of the $v_i$, then $\{v_1, v_2, v_3\}$ forms a basis for $\mathbb{Z}^3$ with integer coefficients, since $\dim \mathbb{Z}^3 = 3$. Then, for standard basis $\{e_1, e_2, e_3\}$, there exists unique $a_{ij} \in \mathbb{Z}$ such that $e_i = \sum^3_{j=1}a_{ij} v_j$. Let $A = (a_{ij})_{3 \times 3}$, and we have
+    \begin{align*}
+        AD = \begin{pmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23} \\
+        a_{31} & a_{32} & a_{33}
+    \end{pmatrix}\begin{pmatrix}
+        x_1 & x_2 & x_3 \\
+        y_1 & y_2 & y_3 \\
+        z_1 & z_2 & z_3
+    \end{pmatrix} = \begin{pmatrix}
+        e_1 \\
+        e_2 \\
+        e_3
+    \end{pmatrix} = I.
+    \end{align*}
+    Then, we have $\det A \det D = 1$. And since $a_{ij}, x_i, y_i, z_i$ are integers, then $\det D = \pm 1$. Thus, The volume of $P$ is $1$.
+    
+    \item $\Leftarrow$) If the volume of $P$ is $1$, then $\det D = \pm 1$ and hence $\{v_1, v_2, v_3\}$ is linearly independent. Then for any vector $x = (a_1, b_1, c_1) \in \mathbb{Z}^3$, there exists $l_1, l_2, l_3 \in \mathbb{R}$ such that $x = l_1 v_1 + l_2 v_2 + l_3 v_3$, that is 
+    \begin{align*}
+        l_1 x_1 + l_2 x_2 + l_3 x_3 & = a_1, \\
+        l_1 y_1 + l_2 y_2 + l_3 y_3 & = b_1, \\
+        l_1 z_1 + l_2 z_2 + l_3 z_3 & = c_1.
+    \end{align*}
+    By Cramer's rule, we have
+    \begin{align*}
+        l_1 = \frac{\det \begin{pmatrix} 
+        a_1 & x_2 & x_3 \\
+        b_1 & y_2 & y_3 \\
+        c_1 & z_2 & z_3
+        \end{pmatrix}}{\det D},
+    \end{align*}
+    and since $a_1, b_1, c_1, x_i, y_i, z_i$ are all integers, then $l_1 \in \mathbb{Z}$, so are $l_2, l_3$. Thus, every vector in $\mathbb{Z}^3$ is a linear combination of the $v_i$ with integer coefficients.
+    \end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Prove the set of diagonalizable matrices is dense in the set of all complex $n \times n$ matrices, that is, any matrix is a limit of a sequence of diagonalizable matrices.
+\end{exercise}
+\begin{proof}
+For any $n \times n$ matrix $A$, there exists a unitary matrix $U$ such that $U^*AU = T$ is an upper triangular matrix. Let $T_1$ be a matrix defined by
+\begin{align*}
+    T_1 = T + \begin{pmatrix} 
+        \varepsilon_1 & & & \\
+        & \frac{\varepsilon_1}{2} & & \\
+        & & \ddots & \\
+        & & & \frac{\varepsilon_1}{n}
+    \end{pmatrix},
+\end{align*}
+such that the diagonal entries of $T_1$ are distinct, then $T_1$ is diagonalizable. There also exists $0 < \varepsilon_2 < \varepsilon_1$ such that $t_{ii} + \varepsilon/n$ are distinct, then $T_2 = T + \operatorname{diag}[\varepsilon_2, \varepsilon_2/2, \cdots, \varepsilon_2/n]$ is also diagonalizable. Continue this process and we have a sequence of diagonalizable matrices $\{T_k\}$, with $\lim_{k\to\infty}\varepsilon_k = 0$.
+
+Now we have 
+\begin{align*}
+    \left\|A - U T_k U^*\right\|^2 & = \sup_{x \in \mathbb{C}^n, \|x\| = 1} \left\|(A - U T_k U^*)x\right\|^2 \\
+    & = \sup \left\|U(T - T_k)U^*x\right\| \\
+    & = \sup \left(U(T - T_k)U^*x, U(T - T_k)U^*x \right) \\
+    & = \sup \left((T - T_k)U^*x, U^*U(T - T_k)U^*x \right) \\
+    & = \sup \left((T - T_k)U^*x, (T - T_k)U^*x \right)\\
+    & = \sup \sum^n_{i=1} \frac{\varepsilon_k^2}{i^2} |x_i|^2 \to 0,
+\end{align*}
+where $U^* x = (x_1, \cdots, x_n)$. Thus, any matrix $A$ is a limit of a sequence of diagonalizable matrices.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Suppose $A = (a_{ij})$ is an $n \times n$ positive definite matrix over $\mathbb{C}$. Show that the determinant of any principal submatrix of $A$ is a positive real number. (A principal submatrix is a submatrix of $A$ whose entries are $a_{pq}$ for $p, q \in I$, where $I = \{i_1, \cdots, i_k\}$ is some subset of $\{1, \cdots, n\}$.)
+\end{exercise}
+\begin{proof}
+Let $B$ be a principal submatrix of $A$ whose entries are $a_{pq}$ for $p, q \in I$, where $I = \{i_1, \cdots, i_k\}$ is some subset of $\{1, \cdots, n\}$. Let $x = (x_1, \cdots, x_n) \in \mathbb{C}^n$ and $y = (x_{i_1}, \cdots, x_{i_k}) \in \mathbb{C}^k$, also let $x_j = 0$ if $j \notin I$. Then,
+\begin{align*}
+    (y, By) = (x, Ax) > 0,
+\end{align*}
+which implies that $B$ is also a positive definite matrix. Thus, $\det B > 0$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $M$ be an $n \times n$ complex matrix. The nullity sequence of $M$ is the sequence $\{N_1(M), N_2(M), \cdots\}$, where $N_k(M) = \operatorname{null} (M^k) = \dim N_{M^k}$ for every $k$. Let $A, B$ be $n \times n$ complex nilpotent matrices. Show that $A$ and $B$ are similar if and only if they have the same nullity sequence.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item $\Rightarrow$) If $A$ and $B$ are similar, then there exists an invertible matrix $P$ such that $A = PBP^{-1}$. Since $R_A = R_B$, we have
+    \begin{align*}
+        \rank \left(A^k\right) = \rank \left(PBP^{-1}\right)^k = \rank \left(PB^kP^{-1}\right) = \rank \left(B^k\right).
+    \end{align*}
+    By rank-nullity theorem, we have $N_k(A) = N_k(B)$ and thus, $A$ and $B$ have the same nullity sequence.
+    
+    \item $\Leftarrow$) Suppose $A$ and $B$ have the same nullity sequence. Consider Jodran forms $J_A$ and $J_B$ of $A, B$ in the form
+    \begin{align*}
+        J_A = \begin{pmatrix}
+            J_1 & & \\
+            & \ddots & \\
+            & & J_m
+        \end{pmatrix}, \quad J_B = \begin{pmatrix}
+            K_1 & & \\
+            & \ddots & \\
+            & & K_l
+        \end{pmatrix},
+    \end{align*}
+    where $J_j$ and $K_j$ have form 
+    \begin{align*}
+        \begin{pmatrix}
+            0 & 1 & & & \\
+            & 0 & \ddots & & \\
+            & & \ddots & \ddots & \\
+            & & & 0 & 1 \\
+            & & & & 0
+        \end{pmatrix}.
+    \end{align*}
+    Also, $J_j^2$ and $K_j^2$ have form
+    \begin{align*}
+        \begin{pmatrix}
+            0 & 0 & 1 & & & \\
+            & 0 & 0 & & & \\
+            & & 0 & \ddots & & \\
+            & & & \ddots & \ddots & 1 \\
+            & & & & \ddots & 0 \\
+            & & & & & 0
+        \end{pmatrix},
+    \end{align*}
+    which implies $\dim N_{J_j^k}$ and $\dim N_{K_j^k}$ increase $1$ as $k$ increase $1$. Since $A$ and $B$ have the same nullity sequence, then $\dim N_{J_j^k} = \dim N_{K_j^k}$ for all $k$, and hence $J_A$ and $J_B$ has same number of Jordan blocks, that is $m = l$. 
+    
+    Also, we can have that for each $i$, $J_i = K_i$. Otherwise, for some $\tilde{i}$, $J_{\tilde{i}} \neq K_{\tilde{i}}$. Without losing generality, assume that $J_{\tilde{i}}$ is a $r \times r$ Jordan block and $K_{\tilde{i}}$ is a $s \times s$ Jordan block, and $r < s$. Then, $J_{\tilde{i}}^{r-1} = 0 \neq K_{\tilde{i}}^{r-1}$, which is a contradiction. Therefore, for each $i$, $J_i = K_i$, that is $A$ and $B$ have the same Jordan form. Thus, $A$ and $B$ are similar.
+\end{enumerate}
+\end{proof}
+
+
+
+
+
+
 
 
 
