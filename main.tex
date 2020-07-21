@@ -1789,6 +1789,108 @@ Let $M$ be an $n \times n$ complex matrix. The nullity sequence of $M$ is the se
 \end{proof}
 
 
+\newpage
+\section{May 2016 Exam}
+
+\begin{exercise}\label{May_2016_1}
+Let $A$ and $B$ be $n \times n$ complex matrices. Show that $AB$ and $BA$ have the same characteristic polynomial. Is it true that $AB$ and $BA$ also have the same minimal polynomial? (Remember to consider the case when $A$ and $B$ are not invertible.)
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $A$ is invertible and $\lambda$ is an eigenvalue of $AB$, then we have $\det (AB - \lambda I) = 0$. On the other hand,
+    \begin{align*}
+        \det (AB - \lambda I) & = \det A^{-1} \det (AB - \lambda I) \det A \\
+        & = \det (BA - \lambda I),
+    \end{align*}
+    then $\det (BA - \lambda I) = 0$, which implies $\lambda$ is also an eigenvalue for $BA$. Thus, $AB$ and $BA$ have the same characteristic polynomial.
+    
+    If $A$ is not invertible, then there exists $\varepsilon_k > 0$ such that $\lim_{k\to\infty} \varepsilon_k = 0$ and $A_k = A + \varepsilon_k I$ is invertible. Then, by the statement before, $A_kB$ and $BA_k$ have the same characteristic polynomial. Since $AB = \lim_{k\to\infty}A_kB$ and $BA = \lim_{k\to\infty}BA_k$, then $AB$ and $BA$ have the same characteristic polynomial.
+    
+    \item In general, $AB$ and $BA$ does not have the same minimal polynomial. Let
+    \begin{align*}
+        A = \begin{pmatrix}
+            0 & 1 & 0 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0 \\
+        \end{pmatrix}, \quad B = \begin{pmatrix}
+            0 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 0 \\
+        \end{pmatrix},
+    \end{align*}
+    then we have 
+    \begin{align*}
+        AB = \begin{pmatrix}
+            0 & 1 & 0 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0 \\
+        \end{pmatrix}, \quad BA = 0,
+    \end{align*}
+    and thus $m_{AB}(\lambda) = \lambda^2 \neq m_{BA}(\lambda) = \lambda$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Exercise \ref{May_2016_1}(a)]
+Since
+\begin{align*}
+    \begin{pmatrix}
+        xI & A \\
+        B & I
+    \end{pmatrix}\begin{pmatrix}
+        I & 0 \\
+        -B & xI
+    \end{pmatrix} & = \begin{pmatrix}
+        xI - AB & xA \\
+        0 & xI
+    \end{pmatrix}, \\
+    \begin{pmatrix}
+        I & 0 \\
+        -B & xI
+    \end{pmatrix}\begin{pmatrix}
+        xI & A \\
+        B & I
+    \end{pmatrix} & = \begin{pmatrix}
+        xI & A \\
+        0 & xI - AB
+    \end{pmatrix},
+\end{align*}
+then we have
+\begin{align*}
+    \det \begin{pmatrix}
+        xI - AB & xA \\
+        0 & xI
+    \end{pmatrix} = \det \begin{pmatrix}
+        xI & A \\
+        0 & xI - AB
+    \end{pmatrix},
+\end{align*}
+which implies 
+\begin{align*}
+    x^n \det (xI - AB) = x^n \det (xI - BA).
+\end{align*}
+Since $x^n$ is nonzero polynomial, then we have
+\begin{align*}
+    \det (xI - AB) = \det (xI - BA),
+\end{align*}
+and thus $AB$ and $BA$ have the same characteristic polynomial.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $A, B$ be $n \times n$ real matrices. Suppose $A + B = I$ and $\operatorname{rank}(A) + \operatorname{rank}(B) = n$, show that $R_A \cap R_B = \{0\}$.
+\end{exercise}
+\begin{proof}
+For any $x \in \mathbb{R}^n$, if $x \in R_{A + B}$, then there exist $y \in \mathbb{R}^n$ such that $x = (A + B)y \in R_A + R_B$. Therefore, $R_{A + B} \subset R_A + R_B$, which implies $\dim R_{A + B} \leq \dim R_A + \dim R_B$. Since $A + B = I$, then $\dim R_{A + B} = n$. Now we have $\operatorname{rank}(A) + \operatorname{rank}(B) = n$, then
+\begin{align*}
+    \dim (R_A \cap R_B) & = \dim R_A + \dim R_B - \dim (R_A + R_B) \\
+    & \leq \dim R_A + \dim R_B - \dim R_{A + B} \\
+    & \leq n - n = 0.
+\end{align*}
+Thus, $\dim (R_A \cap R_B) = 0$ and hence $R_A \cap R_B = \{0\}$.
+\end{proof}
 
 
 
