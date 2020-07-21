@@ -1892,6 +1892,165 @@ For any $x \in \mathbb{R}^n$, if $x \in R_{A + B}$, then there exist $y \in \mat
 Thus, $\dim (R_A \cap R_B) = 0$ and hence $R_A \cap R_B = \{0\}$.
 \end{proof}
 
+\medskip
+
+\begin{exercise}{\rm *}
+Prove that any unitary matrix $Q$ has a square root which is also unitary, i.e. there is a unitary matrix $R$ such that $R^2 = Q$.
+\end{exercise}
+\begin{proof}
+Since $QQ^* = Q^*Q = I$, then $Q$ is normal and hence it can be unitarly diagonalized, that is there exists a unitary matrix $U$ such that $Q = U \Lambda U^*$, where $\Lambda$ is diagonal. Also, we have
+\begin{align*}
+    \Lambda \Lambda^* = U^* Q U (U^* Q U)^* = U^* Q Q^* U = I,
+\end{align*}
+and then $\Lambda$ has the form
+\begin{align*}
+    \Lambda = \begin{pmatrix}
+        e^{i\theta_1} & & \\
+        & \ddots & \\
+        & & e^{i\theta_n}
+    \end{pmatrix}.
+\end{align*}
+Let $P = \begin{pmatrix} e^{i\theta_1/2} & & \\ & \ddots & \\ & & e^{i\theta_n/2} \end{pmatrix}$, then $P^2 = \Lambda$. Let $R = U P U^*$, then we have 
+$$R^2 = U P U^* U P U^* = U P P U^* = Q.$$ 
+Also, we have
+\begin{align*}
+    RR^* = U P U^*(U P U^*)^* = U P P^* U^* = I,
+\end{align*}
+and thus $R$ is unitary.
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Let $v \in \mathbb{C}^n$ be a nonzero vector (written as a clomun vector) and let $M$ be the $n \times n$ matrix defined by $M = v v^T$.
+\begin{enumerate}[label=(\alph*)]
+    \item Find the eigenvalues, eigenvectors, characteristic polynomial and minimal polynomial of $M$. 
+    
+    \item Is $M$ diagonalizable?
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Let $v = (x_1, x_2, \cdots, x_n)^T$, then we have $M$ is symmetric, since
+    \begin{align*}
+        M = \begin{pmatrix}
+            x_1^2 & x_1x_2 & \cdots & x_1x_n \\
+            x_1x_2 & x_2^2 & \cdots & x_2x_n \\
+            \vdots & \vdots & \ddots & \vdots \\
+            x_1x_n & x_2x_n & \cdots & x_n^2
+        \end{pmatrix}.
+    \end{align*}
+    Also, we have $M^2 = cM$, where $c = \sum^n_{i=1} x_i^2$. Then, $\lambda^2 - c\lambda$ is a polynomial of $M$ that annihilates $M$. Since $M \neq 0$, then $\lambda$ is not the minimal polynomial of $M$. If $M - cI = 0$, then $x_i^2 - \sum^n_{j=1}x_j^2 = 0$ for each $i$, which implies $x_i = 0$ for each $i$. This is a contradiction with the fact that $v \neq 0$. Thus, the minila polynomial of $M$ is $m_M(\lambda) = \lambda^2 - c \lambda$.
+    
+    For eigenvalue $0$, let $y = (y_1, \cdots, y_n)$ be eigenvector of $M$. Then, we have $My = 0$, which implies $x_i \sum^n_{j=1} x_j y_i = 0$ for each $i$. Since $v \neq 0$, then at least one of $x_i$ is nonzero, and we can assume $x_n \neq 0$. Then, we can have eigenvectors
+    \begin{align*}
+        y = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \\ - \frac{x_1}{x_n} \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \\ - \frac{x_2}{x_n} \end{pmatrix}, \cdots, \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 1 \\ - \frac{x_{n-1}}{x_n} \end{pmatrix},
+    \end{align*}
+    and hence the dimension of eigenspace for eigenvalue $0$ is $n - 1$.
+    
+    For eigenvalue $c$, if $c = 0$, then the characteristic polynomial of $M$ is $p_M(\lambda) = \lambda^n$ and the eigenvectors are shown above. If $c \neq 0$, then the characteristic polynomial of $M$ is $p_M(\lambda) = \lambda^{n - 1}(\lambda - c)$, then the eigenvectors for $\lambda = 0$ is shown above and the eigenvectors for $\lambda = c$ is $v$.
+    
+    \item If $c = 0$, then the dimension of eigenspace for eigenvalue $0$ is $n - 1$, then $M$ is not diagonalizable.
+    
+    If $c \neq 0$, then $M$ is diagonalizable, since $p_M(\lambda) = \lambda^{n - 1}(\lambda - c)$ and $\dim N_{M - cI} = n - 1$, $\dim N_{M} = 1$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\newpage
+\begin{exercise}
+Let $A$ be an $n \times n$ complex matrix such that the minimal polynomial $m_A$ is $m_A(t) = t^n$. Prove that there is a vector $v \in \mathbb{C}^n$ such that $\left\{v, Av, \cdots, A^{n-1}v\right\}$ is a basis for $\mathbb{C}^n$.
+\end{exercise}
+\begin{proof}
+Since the minimal polynomial $m_A$ is $m_A(t) = t^n$, then $A^{n-1} \neq 0$. Then there exists a vector $v$ such that $A^{n-1}v \neq 0$. Suppose there exists $c_0, c_1, \cdots, c_{n-1}$ such that
+\begin{align*}
+    c_0 v + c_1 Av + c_2 A^2v + \cdots + c_{n-1} A^{n-1}v = 0.
+\end{align*}
+Applying $A^{n-1}$ on both sides gives $c_0 A^{n-1}v = 0$, that is $c_0 = 0$. Then, applying $A^{n-2}$ on both sides gives $c_1 = 0$. Continue this process and we have $c_0 = c_1 = \cdots = c_{n-1} = 0$, which implies $\left\{v, Av, \cdots, A^{n-1}v\right\}$ is linearly independent. Since there are $n$ vectors in $\left\{v, Av, \cdots, A^{n-1}v\right\}$, then it is a basis for $\mathbb{C}^n$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+~\begin{enumerate}[label=(\alph*)]
+    \item Let $A$ and $B$ be $n \times n$ complex matrices which are non-negative (i.e. self-adjoint and all the eigenvalues are nonnegative). Show that
+    \begin{align*}
+        \det (A + B) \geq \det (A) + \det (B).
+    \end{align*}
+    
+    \item Show that the set of positive (definite) matrices with determinant greater than $1$ is a convex set. Recall that a set $S$ is convex if for any $A, B \in S$ and $0 \leq t \leq 1$, we have $tA + (1-t)B \in S$. {\bf Hint:} log-concavity.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Since $A, B$ are non-negative, then $A + B$ is also non-negative. Indeed, for any $x \in \mathbb{C}^n$, $(x, (A+B)x) = (x, Ax) + (x, Bx) \geq 0$.
+    
+    If $A$ and $B$ are both not invertible, then $\det(A+B) \geq \det(A) + \det(B) = 0$.
+    
+    If one of $A$ and $B$ is invertible, saying $A$, then we have
+    \begin{align*}
+        \det(A + B) & = \det \left(A^{-1} (A + B) A \right) \\
+        & = \det \left(A + A^{-1} BA \right) \\
+        & = \det (A) \det \left(I + A^{-1} B\right).
+    \end{align*}
+    Also, since $A$ is invertible, then we have
+    \begin{align*}
+        A^{-1} B = A^{-\frac{1}{2}} A^{-\frac{1}{2}} B A^{-\frac{1}{2}} A^{\frac{1}{2}},
+    \end{align*}
+    that is $A^{-1} B$ is similar to $A^{-\frac{1}{2}} B A^{-\frac{1}{2}}$, which is also non-negative. Indeed, for any $x \in \mathbb{C}^n$, 
+    \begin{align*}
+        \left(x, A^{-\frac{1}{2}} B A^{-\frac{1}{2}} x\right) = \left(A^{-\frac{1}{2}} x, B A^{-\frac{1}{2}} x\right) \geq 0.
+    \end{align*}
+    Then, $A^{-1} B$ is also non-negative. Therefore, $A^{-1} B$ is diagonalizable, that is, there exists a unitary matrix $P$ such that $A^{-1}B = P \Lambda P^*$, where $\Lambda$ is diagonal.
+    
+    Let $\lambda_1, \cdots, \lambda_n$ be eigenvalues of $A^{-1} B$, then 
+    \begin{align*}
+        \det \left(I + A^{-1} B\right) & = \det \left(P^* \left(I + A^{-1} B\right) P \right) \\
+        & = \det \left(I + \Lambda \right) \\
+        & = \prod^n_{i=1} (1 + \lambda_i) \\
+        & \geq 1 + \prod^n_{i=1} \lambda_i = I + \det \left(A^{-1} B\right).
+    \end{align*}
+    Thus, we have
+    \begin{align*}
+        \det(A + B) & = \det (A) \det \left(I + A^{-1} B\right) \\
+        & \geq \det (A) \left(I + \det \left(A^{-1} B\right) \right) \\
+        & = \det(A) + \det(B).
+    \end{align*}
+    
+    \item By log-concavity, we have
+    \begin{align*}
+        \det (tA + (1-t)B) \geq (\det A)^t (\det B)^{1-t} > 1,
+    \end{align*}
+    thus, $S$ is convex.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{proof}[Simple Proof of log-concavity]
+Since $B$ is invertible, then
+\begin{align*}
+    \det(tA + (1-t)B) = \det(B) \det\left(tB^{-1}A + (1-t)I\right).
+\end{align*}
+Suppose $\lambda_1, \cdots, \lambda_n$ are eigenvalues of $B^{-1}A$. Now we condier function $f(x) = tx + (1-t) - x^t$, then 
+\begin{align*}
+    f'(x) = t - tx^{t-1},
+\end{align*}
+and $f(x)$ is decreasing for $x \in (0,1)$ and $f(x)$ is increasing for $x > 1$. Therefore, $f(x) \geq f(1) = 0$. Then, we have
+\begin{align*}
+    \det\left(tB^{-1}A + (1-t)I\right) & = \prod^n_{i=1} (t \lambda_i + 1 - t) \\
+    & \geq \prod^n_{i=1}\lambda_i^t = \left(\det(B^{-1}A)\right)^t.
+\end{align*}
+Thus, 
+\begin{align*}
+    \det(tA + (1-t)B) & = \det(B) \det\left(tB^{-1}A + (1-t)I\right)\\
+    & \geq \det(B) \left(\det(B^{-1}A)\right)^t \\
+    & = \det(B) \det\left(B^{-1}\right) (\det A)^t \\
+    & = (\det A)^t (\det B)^{1-t}.
+\end{align*}
+\end{proof}
+
 
 
 
