@@ -1743,13 +1743,13 @@ Let $M$ be an $n \times n$ complex matrix. The nullity sequence of $M$ is the se
 \end{exercise}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
-    \item $\Rightarrow$) If $A$ and $B$ are similar, then there exists an invertible matrix $P$ such that $A = PBP^{-1}$. Since $R_A = R_B$, we have
+    \item ($\Rightarrow$) If $A$ and $B$ are similar, then there exists an invertible matrix $P$ such that $A = PBP^{-1}$. Since $R_A = R_B$, we have
     \begin{align*}
         \rank \left(A^k\right) = \rank \left(PBP^{-1}\right)^k = \rank \left(PB^kP^{-1}\right) = \rank \left(B^k\right).
     \end{align*}
     By rank-nullity theorem, we have $N_k(A) = N_k(B)$ and thus, $A$ and $B$ have the same nullity sequence.
     
-    \item $\Leftarrow$) Suppose $A$ and $B$ have the same nullity sequence. Consider Jodran forms $J_A$ and $J_B$ of $A, B$ in the form
+    \item ($\Leftarrow$) Suppose $A$ and $B$ have the same nullity sequence. Consider Jodran forms $J_A$ and $J_B$ of $A, B$ in the form
     \begin{align*}
         J_A = \begin{pmatrix}
             J_1 & & \\
@@ -2052,8 +2052,140 @@ Thus,
 \end{proof}
 
 
+\newpage
+\section{August 2015 Exam}
 
+\begin{exercise}
+Let $V$ be a finite dimensional vector space. Prove that every linearly independent set of $V$ can be extended to a basis for $V$.
+\end{exercise}
+\begin{proof}
+Let $\dim V = n < \infty$. Let $S$ be any linearly independent set in $V$, and then $S$ cannot contain more than $n$ vectors, since any $m$ vectors in $V$, $m > n$ are linearly dependent. Suppose $S = \{s_1, s_2, \cdots, s_k \}$, $k \leq n$. 
 
+If $\operatorname{span}(S) = V$, then $S$ is a basis for $V$.
+If $\operatorname{span}(S) \neq V$, then there exists a vector $v_1 \in V \setminus \operatorname{span}(S)$. Then the set $S_1 = S \cap \{v_1\}$ is linearly independent. If If $\operatorname{span}(S_1) = V$, then $S_1$ is a basis for $V$. If not, then we can continue the process like before. 
+
+After continuing this process $n - k$ times, we get a set with $n$ linearly independent vectors,
+\begin{align*}
+    S_{n - k} = S \cap \{v_1, v_2, \cdots, v_{n-k}\},
+\end{align*}
+then $\dim S_{n-k} = n$, and hence $\operatorname{span}(S_{n-k}) = V$. Thus, $S_{n-k}$ is a basis for $V$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $A, B, C$ be $n \times n$ matrices satisfying $AB = BA$. Show that
+\begin{align*}
+    \det (A + BC) = \det (A + CB).
+\end{align*}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $B$ is invertible, then by $AB = BA$, we have
+    \begin{align*}
+        \det (A + BC) & = \det \left(B^{-1}(A + BC)B\right) \\
+        & = \det \left(B^{-1}AB + CB\right) \\
+        & = \det \left(B^{-1}BA + CB\right) \\
+        & = \det \left(A + CB\right).
+    \end{align*}
+    
+    \item If $B$ is not invertible, then there exists $\varepsilon_k > 0$ and $\varepsilon_k \to 0$ such that $B_k = B + \varepsilon_k I$ is invertible. Then, taking $k \to \infty$ we could get the result.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Prove that for any $n \times n$ complex matrix $A$, 
+\begin{align*}
+    \left|\operatorname{tr}(A^*A) \right| \leq n \|A\|^2,
+\end{align*}
+where $\|A\|$ is the operator norm of $A$ defined by
+\begin{align*}
+    \|A\| = \sup_{x \in \mathbb{C}^n, x \neq 0} \frac{|Ax|}{x}.
+\end{align*}
+\end{exercise}
+\begin{proof}
+Since $(A^*A)^* = A^*A$, then $A^*A$ is self-adjoint and hence can be diagonalized by a unitary matrix, that is there exists an orthogonal basis $\{v_1, \cdots, v_n\}$ in $\mathbb{C}^{n}$, such that $A^*A v_i = \lambda_i v_i$, where $\lambda_i$ is $i$-th eigenvalue of $A^*A$. Then, we have
+\begin{align*}
+    \left|\operatorname{tr}(A^*A) \right| & = \left|\sum^n_{i=1} \lambda_i \right| \leq \sum^n_{i=1} \left|\lambda_i \right| \\
+    & = \sum^n_{i=1} \left|(\lambda_i v_i, v_i) \right| \\
+    & = \sum^n_{i=1} \left|(A^*A v_i, v_i) \right| \\
+    & = \sum^n_{i=1} \left|Av_i \right|^2 \\
+    & \leq \sum^n_{i=1} \|A\|^2 = n \|A\|^2.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $P_4$ be the vector space of polynomials with real coefficients of orders at most $3$. Consider the linear map
+\begin{align*}
+    T: p(t) \mapsto p(t + 1) - p(t).
+\end{align*}
+\begin{enumerate}[label=(\alph*)]
+    \item Find all eigenvalues of corresponding eigenspaces of $T$.
+    
+    \item Find the Jordan canonical form of $T$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item For any $p(t) = a_0 + a_1 t + a_2 t^2 + a_3 t^3$, $T(p) = a_3 t^2 + (3a_3 + 2a_2)t + (a_1 + a_2 + a_3)$. Then, under the basis $\mathcal{B} = \{1, t, t^2, t^3\}$, 
+    \begin{align*}
+        [T]_{\mathcal{B}} = \begin{pmatrix}
+            0 & 1 & 1 & 1 \\
+            0 & 0 & 2 & 3 \\
+            0 & 0 & 0 & 3 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix},
+    \end{align*}
+    then the charasteristic polynomial of $T$ is $p_T(\lambda) = \lambda^4$, and the only eigenvalue is $\lambda = 0$. Then, the eigenvector is $(1, 0, 0, 0)^T$, and hence the eigenspace of $T$ is $\{c\, | \, c \in \mathbb{R}\}$.
+    
+    \item Since $\dim N_{T} = 1$, then there is only one Jordan block in its Jordan form. Thus, the Jordan canonical form of $T$ is
+    \begin{align*}
+        J_T = \begin{pmatrix}
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix}.
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $A(t)$ be a differentiable $n \times n$ matrix valued function. Is it always true that 
+\begin{align*}
+    \dv[]{}{t} A^2(t) = 2 A(t) \dv[]{A(t)}{t}?
+\end{align*}
+Prove it or provide a counter example.
+\end{exercise}
+\begin{proof}
+For $n = 1$, and $A(t)$ is a function of one variable, then it is true that $\dv[]{}{t} A^2(t) = 2 A(t) \dv[]{A(t)}{t}$.
+
+For $n \geq 2$, the statement is not always true. For example, let $A(t) = \begin{pmatrix} 0 & \sin x \\ \cos x & 0 \end{pmatrix}$, then
+\begin{align*}
+    \dv[]{}{t} A^2(t) & = \begin{pmatrix} \cos^2 x - \sin^2 x & 0 \\ 0 & \cos^2 x - \sin^2 x \end{pmatrix}, \\
+    2 A(t) \dv[]{A(t)}{t} & = \begin{pmatrix} -2\sin^2 x & 0 \\ 0 & 2\cos^2 x \end{pmatrix},
+\end{align*}
+and thus the equality does not hold for $A(t)$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Prove that if $A$ is an invertible $n \times n$ matrix with integer entries, then $A^{-1}$ has integer entries if and only if $\det(A) = \pm 1$.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item ($\Rightarrow$) Since $\det (A) \det (A^{-1}) = 1$ and $\det (A), \det (A^{-1}) \in \mathbb{Z}$, then $\det(A) = \pm 1$.
+    
+    \item ($\Leftarrow$) If $\det(A) = \pm 1$, by $A^{-1} = (\det A)^{-1} \operatorname{adj}(A)$, we could have $^{-1} = \pm \operatorname{adj}(A)$. And since $\operatorname{adj}(A)$ is also a matrix with integer entries, then so is $A^{-1}$.
+\end{enumerate}
+\end{proof}
 
 
 
