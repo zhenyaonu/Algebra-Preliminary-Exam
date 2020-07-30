@@ -2364,8 +2364,18 @@ Then, we have the second inequality
 \end{align*}
 similarly, we can have 
 \begin{align*}
-    \mu_1 & = \min_{S \subset \mathbb{C}^2, \dim S = 1} \left\{\max_{x = (x_1, x_2) \in S, x \neq 0} \frac{(x, Bx)}{(x,x)} \right\} \\
-    & = 
+    \gamma_2 & = \max_{S \subset \mathbb{C}^3, \dim S = 3 - 2 + 1 = 2} \left\{\min_{x \in S, x \neq 0} \frac{(x, Ax)}{(x,x)} \right\} \\
+    & \geq \min_{x = (x_1, x_2, 0) \in \mathbb{C}^3, x \neq 0} \frac{(x, Ax)}{(x, x)} \\
+    & = \min_{y = (x_1, x_2) \in \mathbb{C}^2, y \neq 0} \frac{(y, By)}{(y, y)} \\
+    & = \max_{S \subset \mathbb{C}^2, \dim S = 2 - 1 + 1 = 2} \left\{ \min_{y = (x_1, x_2) \in S, y \neq 0} \frac{(y, By)}{(y, y)} \right\} = \mu_1.
+\end{align*}
+Finally, we have
+\begin{align*}
+    \gamma_1 & = \max_{S \subset \mathbb{C}^3, \dim S = 3} \left\{ \min_{x \in S, x \neq 0} \frac{(x, Ax)}{(x, x)} \right\} \\
+    & = \min_{x \in S, x \neq 0} \frac{(x, Ax)}{(x, x)} \\
+    & \leq \min_{x = (x_1, x_2, 0) \in \mathbb{C}^3, x \neq 0} \frac{(x, Ax)}{(x, x)} \\
+    & = \min_{y = (x_1, x_2) \in \mathbb{C}^2, y \neq 0} \frac{(y, By)}{(y, y)} \\
+    & = \max_{S \subset \mathbb{C}^2, \dim S = 2} \left\{ \min_{y = (x_1, x_2) \in S, y \neq 0} \frac{(y, By)}{(y, y)} \right\} = \mu_1.
 \end{align*}
 \end{proof}
 
