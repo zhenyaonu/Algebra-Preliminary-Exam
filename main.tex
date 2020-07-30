@@ -2340,6 +2340,39 @@ Let $\mathfrak{sl}(2, \mathbb{C})$ denote the vector space of $2 \times 2$ compl
 \end{enumerate}
 \end{proof}
 
+\medskip
+
+\begin{exercise}
+Let $A$ be a $3 \times 3$ Hermitian matrix with eigenvalues $\gamma_1 \leq \gamma_2 \leq \gamma_3$. Let $B$ be the $2 \times 2$ matrix which is the upper left corner entries of $A$. Let $\mu_1 \leq \mu_2$ be the eigenvalues of $B$. Use Min-max theorem about eigenvalues to prove that these eigenvalues satisfy the interlacing inequalities:
+\begin{align*}
+    \gamma_1 \leq \mu_1 \leq \gamma_2 \leq \mu_2 \leq \gamma_3.
+\end{align*}
+\end{exercise}
+\begin{proof}
+First, we have
+\begin{align*}
+    \mu_2 & = \min_{S \subset \mathbb{C}^2, \dim S = 2} \left\{\max_{x \in S, x \neq 0} \frac{(x, Bx)}{(x,x)} \right\} \\
+    & = \max_{x =(x_1, x_2) \in \mathbb{C}^2, x \neq 0} \frac{(x, Bx)}{(x,x)} \\
+    & = \max_{y \in \mathbb{C}^3, y = (x_1, x_2, 0)} \frac{(y, Ay)}{(y,y)} \\
+    & \leq \max_{y \in \mathbb{C}^3, y \neq 0} \frac{(y, Ay)}{(y,y)} = \gamma_3.
+\end{align*}
+Then, we have the second inequality 
+\begin{align*}
+    \gamma_2 & = \min_{S \subset \mathbb{C}^3, \dim S = 2} \left\{\max_{x \in S, x \neq 0} \frac{(x, Ax)}{(x,x)} \right\}\\
+    & \leq \max_{x = (x_1, x_2, 0) \in \mathbb{C}^2, x \neq 0} \frac{(x, Ax)}{(x,x)} \\
+    & = \max_{y = (x_1, x_2), y \neq 0} \frac{(y, By)}{(y, y)} = \mu_2,
+\end{align*}
+similarly, we can have 
+\begin{align*}
+    \mu_1 & = \min_{S \subset \mathbb{C}^2, \dim S = 1} \left\{\max_{x = (x_1, x_2) \in S, x \neq 0} \frac{(x, Bx)}{(x,x)} \right\} \\
+    & = 
+\end{align*}
+\end{proof}
+
+
+
+
+
 
 
 
