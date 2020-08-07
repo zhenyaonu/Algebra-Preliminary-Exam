@@ -2383,14 +2383,158 @@ Finally, we have
 \newpage
 \section{August 2014 Exam}
 
-\begin{exercise}
+\begin{exercise}{\rm \cite{10}*}
 Let $Y$ be a subspace of a finite dimensional linear space $X$. Prove that
 \begin{align*}
     \dim X/Y = \dim X - \dim Y.
 \end{align*}
 \end{exercise}
 \begin{proof}
+Suppose $\dim X = n$ and $\dim Y = m$, and let $\{y_1, \cdots, y_m\}$ be a basis for $Y$. And this set can be completed in a basis for $X$ by adjoining $x_{m+1}, \cdots, x_n$. We claim that
+\begin{align*}
+    \{x_{m+1}\}, \cdots, \{x_n\}
+\end{align*}
+form a basis for $X/Y$. It suffices to show that they span $X/Y$ and they are linearly independent.
+\begin{enumerate}[label=(\alph*)]
+    \item Since $y_1, \cdots, y_m, x_{m+1}, \cdots, x_n$ form a basis for $X$, then any $x \in X$ can be expressed as
+    \begin{align*}
+        x = \sum^m_{i=1} a_i y_i + \sum^n_{k=m+1} b_k x_k.
+    \end{align*}
+    Then it follows that
+    \begin{align*}
+        \{x\} = \sum^n_{k=m+1} b_k \{x_k\},
+    \end{align*}
+    and thus, $\operatorname{span} \left\{ \{x_{m+1}\}, \cdots, \{x_n\} \right\} = X/Y$.
+    
+    \item Suppose there exist $c_{m+1}, \cdots, c_n$ such that
+    \begin{align*}
+        \sum^n_{k=m+1} c_k \{x_k\} = 0,
+    \end{align*}
+    which implies $\sum^n_{k=m+1} c_k x_k = y$ for some $y \in Y$. We can express $y$ as $\sum^m_{i=1} a_i y_i$, then 
+    \begin{align*}
+        \sum^n_{k=m+1} c_k x_k - \sum^m_{i=1} a_i y_i = 0.
+    \end{align*}
+    Since $y_1, \cdots, y_m, x_{m+1}, \cdots, x_n$ form a basis for $X$, then $c_i = 0$ for all $i = m+1, \cdots, n$.
+\end{enumerate}
+\end{proof}
 
+\medskip
+
+\begin{exercise}
+Let $A$ be an $n \times n$ complex matrix such that $A^2 = A$ and $\operatorname{rank} A = r$. Prove that $A$ is similar to $\begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$.
+\end{exercise}
+\begin{proof}
+Since $A^2 - A = 0$, then the polynomial $p = \lambda^2 - \lambda$ annihilates $A$. Then the minimal polynomial $m_A$ can be $\lambda$, $\lambda - 1$ or $\lambda^2 - \lambda$.
+\begin{enumerate}[label=(\alph*)]
+    \item If $m_A = \lambda$, then we have $A = 0$, which is a contradiction.
+    
+    \item If $m_A = \lambda - 1$, then $A = I$ and $r = n$. Then the statement is true.
+    
+    \item If $m_A = \lambda^2 - \lambda$, since $\operatorname{rank} A = r$, then the characteristic polynomial is $p_A = \lambda^{n-r} (\lambda - 1)^r$. Since $\dim N_{A} = n - r$ and $\dim N_{A - I} = r$, then $A$ is diagonalizable, that is there exists an invertible matrix $P$ such that $A = PDP^{-1}$, where
+    \begin{align*}
+        D = \begin{pmatrix}
+            1 & & & & & \\
+            & \ddots & & & & \\
+            & & 1 & & & \\
+            & & & 0 & & \\
+            & & & & \ddots & \\
+            & & & & & 0
+        \end{pmatrix}.
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $A, B$ be two self-adjoint $n \times n$ matrices such that
+\begin{align*}
+    \min_{\lambda \in \sigma(A)} \lambda > \max_{\mu \in \sigma(B)} \mu.
+\end{align*}
+Prove that $A > B$.
+\end{exercise}
+\begin{proof}
+By Minimax method, we have
+\begin{align*}
+    \min_{\lambda \in \sigma(A)} \lambda & = \max_{\dim S = n-1+1=n} \left\{\min_{x\in S, x \neq 0} \frac{(Ax, x)}{(x,x)}\right\} = \min_{x\in \mathbb{C}^n, x \neq 0} \frac{(Ax, x)}{(x,x)}, \\
+    \max_{\mu \in \sigma(B)} \mu & = \min_{\dim S = n} \left\{ \max_{x \in S, x \neq 0} \frac{(Bx, x)}{(x,x)}\right\} = \max_{x \in \mathbb{C}^n, x \neq 0} \frac{(Bx, x)}{(x,x)}.
+\end{align*}
+Also, since $A - B$ is self-adjoint, then for any $x \in \mathbb{C}^n$, we have
+\begin{align*}
+    ((A - B)x, x) & = (Ax, x) - (Bx, x) \\
+    & \geq (x, x) \left(\min_{\lambda \in \sigma(A)} \lambda - \max_{\mu \in \sigma(B)} \mu \right) > 0,
+\end{align*}
+and thus $A - B > 0$, which implies $A > B$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $Q: \mathbb{R}^3 \to \mathbb{R}^3$ be an orthogonal map which is a $\pi/2$ angle rotation about the axis in the direction of vector $v_1 = (1,1,1)$. This rotation follows the right hand rule with the thumb pointing to the $v_1$ direction. Find its matrix representation.
+\end{exercise}
+
+\medskip
+
+\begin{exercise}\label{August_2014_5}
+Let $A, B$ be two positive definite self-adjoint $n \times n$ matrices. Suppose $AB = BA$, prove that $AB > 0$.
+\end{exercise}
+\begin{proof}
+Since $AB = BA$, then $A, B$ can be diagonalized by the same unitary matrix $U$. Indeed, if $AB = BA$, then for any eigenvector $x$ of $A$ corresponding to eigenvalue $\lambda$, 
+\begin{align*}
+    ABx = BAx = \lambda Bx,
+\end{align*}
+which implies $A(Bx) = \lambda (Bx)$. Then, $Bx \in N_{A - \lambda I}$ and $B: N_{A - \lambda I} \to N_{A - \lambda I}$. Applying Spectral theorem to $B|_{N_{A - \lambda I}}$ gives a spectral decomposition for each $N_{A - \lambda_j I}$. Therefore, there exists a basis for $\mathbb{C}^n$ which consists of eigenvectors and generalized eigenvectors of both $A$ and $B$. 
+
+Suppose there exists unitary matrix $U$ such that $A = UD_1U^*$, $B = UD_2U^*$, where $D_1, D_2$ are diagonal matrices with eigenvalues of $A,B$ being diagonal entries. Then, for any $x \in \mathbb{C}^n$, we have
+\begin{align*}
+    (ABx, x) = \left(UD_1 D_2 U^*x, x \right) = \left(D_1 D_2 U^*x, U^*x \right) > 0,
+\end{align*}
+where in the last step we used the fact that $A, B$ are positive definite. Indeed, $\lambda > 0, \mu > 0$ for $\lambda \in \sigma(A), \mu \in \sigma(B)$, and therefore $D_1 D_2$ is positive definite.
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Exercise \ref{August_2014_5}]
+Since $AB = BA$, then $(AB)^* = (BA)^* = A^*B^* = AB$, that is $AB$ is also self-ajoint. Since $A$ is positive, then $A^{1/2}$ is well defined and is also invertible and self-adjoint. By
+\begin{align*}
+    A^{-\frac{1}{2}} AB A^{\frac{1}{2}} = A^{\frac{1}{2}}B A^{\frac{1}{2}},
+\end{align*}
+$AB$ is similar to $A^{\frac{1}{2}}B A^{\frac{1}{2}}$. Also, since
+\begin{align*}
+    \left(A^{\frac{1}{2}}B A^{\frac{1}{2}} \right)^* = A^{\frac{1}{2}}B A^{\frac{1}{2}},
+\end{align*}
+then $A^{\frac{1}{2}}B A^{\frac{1}{2}}$ is also self-adjoint. Then, for any $x \in \mathbb{C}^n$, since $B$ is positive, then
+\begin{align*}
+    \left(A^{\frac{1}{2}}B A^{\frac{1}{2}}x, x \right) = \left(B A^{\frac{1}{2}}x, A^{\frac{1}{2}}x \right) > 0,
+\end{align*}
+which implies $AB$ is positive.
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Let $X$ be a finite dimensional linear space and let $P_1, P_2: X \to X$ be two projections, i.e.,
+\begin{align*}
+    P_1^2 = P_1, \quad P_2^2 = P_2.
+\end{align*}
+Suppose that their ranges satisfy $R_{P_1} \subset R_{P_2}$, is it always true that $P_1P_2 = P_2P_1$?
+\end{exercise}
+\begin{proof}
+It is not always true. Let $\dim X = n \geq 2$, and let 
+\begin{align*}
+    P_1 = \begin{pmatrix}
+        1 & 0 & \cdots & 0 \\
+        0 & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 \cdots & 0
+    \end{pmatrix},\quad P_2 = \begin{pmatrix}
+        1 & 1 & \cdots & 0 \\
+        0 & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 \cdots & 0 
+    \end{pmatrix}.
+\end{align*}
+Then, $P_1^2 = P_1, P_2^2 = P_2$ and $R_{P_1} = R_{P_2} = \{(x, 0, \cdots, 0)\, | \, x \in X\}$. However, $$P_1P_2 = P_2 \neq P_2P_1 = P_1.$$
 \end{proof}
 
 
