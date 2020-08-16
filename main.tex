@@ -87,7 +87,7 @@
 
 \section{May 2019 Exam}
 
-\begin{exercise}
+\begin{exercise}\label{May_2019_1}
 ~\begin{enumerate}[label=(\alph*)]
     \item Prove or give a counterexample: if $T: \mathbb{R}^3 \to \mathbb{R}^3$ is a linear transformation such that $N_T \cap R_T$ has dimension at least $1$, then $T$ is nilpotent. 
     
@@ -113,8 +113,7 @@
 \end{enumerate}
 \end{proof}
 
-We present another approach to prove part $(b)$.
-\begin{proof}
+\begin{proof}[Second Proof of Exercise \ref{May_2019_1}(b)]
 Let $u,v \in N_T \cap R_T$ such that $u, v$ are linearly independent. Then, $Tu = 0$ and $Tv = 0$, and for some $u', v' \in \mathbb{R}^4$, $u = Tu'$ and $v = Tv'$. Define $S = \{u, v, u', v'\}$ and each element of $S$ is annihilated by some power of $T$, saying $T^2$. 
 
 We claim $u, v, u', v'$ are linearly independent. Suppose $c_1 u + c_2 v + c_3 u' + c_4 v' = 0$. We need to prove that $c_i = 0, i = 1,2,3,4$. Applying $T$ to the above equation gives
@@ -2538,8 +2537,178 @@ Then, $P_1^2 = P_1, P_2^2 = P_2$ and $R_{P_1} = R_{P_2} = \{(x, 0, \cdots, 0)\, 
 \end{proof}
 
 
+\newpage
+\section{April 2014 Exam}
 
+\begin{exercise}
+Let $X$ be a finite dimensional linear space and $T \in \mathscr{L}(X, X)$. Suppose 
+\begin{align*}
+    \dim \left(R_{T^2}\right) = \dim \left(R_{T}\right),
+\end{align*}
+prove that 
+\begin{align*}
+    R_T \cap N_T = \{0\}.
+\end{align*}
+Here $R_T$ is the range of $T$ and $N_T$ is the null space of $T$.
+\end{exercise}
+\begin{proof}
+By the Rank theorem, we have 
+\begin{align*}
+    \dim X & = \dim \left(R_{T}\right) + \dim \left(N_{T}\right), \\
+    \dim X & = \dim \left(R_{T^2}\right) + \dim \left(N_{T^2}\right),
+\end{align*}
+and with $\dim \left(R_{T^2}\right) = \dim \left(R_{T}\right)$, we have $\dim \left(N_{T^2}\right) = \dim \left(N_{T}\right)$. On the other hand, for any $x \in N_T$, we have $T^2x = T(Tx) = 0$, and hence $N_T \subset N_{T^2}$. Therefore, $N_T = N_{T^2}$.
 
+Now let $y \in R_T \cap N_T$, then $Ty = 0$ and there exists $x \in X$ such that $Tx= y$. Applying $T$ to $Tx= y$ gives $T^2x = Ty = 0$, which means $x \in N_{T^2} = N_T$. Thus, $Tx = y = 0$, which proves the statement.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let
+\begin{align*}
+    A = \begin{pmatrix}
+        0 & 1 & -1 \\
+        -1 & 0 & -2 \\
+        1 & 2 & 0
+    \end{pmatrix}.
+\end{align*}
+Calculate $A^{2014}$.
+\end{exercise}
+\begin{proof}
+Eigenvalues of $A$ are $\lambda = 0, \pm \sqrt{6}i$, then $A$ is diagonalizable. Then we could use the space of eigenvectors to compute it.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $A, B$ be $n \times n$ complex matrices and $A > 0$. If there exists a $k \in \mathbb{N}$ such that $A^kB = BA^k$, prove that $AB = BA$.
+\end{exercise}
+\begin{proof}
+Since $A > 0$, then $A$ is diagonalizable and has $n$ positive eigenvalues, that is, there exists an invertible matrix $S$ such that $A = S \Lambda S^{-1}$, where 
+\begin{align*}
+    \Lambda = \begin{pmatrix}
+        \lambda_1 & & \\
+        & \ddots & \\
+        & & \lambda_n
+    \end{pmatrix},
+\end{align*}
+and $\lambda_1, \cdots, \lambda_n > 0$. By $A^kB = BA^k$, we have 
+\begin{align*}
+    S \Lambda^k S^{-1} B = B S \Lambda^k S^{-1},
+\end{align*}
+which is equivalent to 
+\begin{align*}
+    \Lambda^k S^{-1} B S = S^{-1} B S \Lambda^k.
+\end{align*}
+
+Now let $S^{-1} B S = C = (c_{ij})_{n\times n}$, then we have
+\begin{align*}
+    \begin{pmatrix}
+        \lambda_1 & & \\
+        & \ddots & \\
+        & & \lambda_n
+    \end{pmatrix} \begin{pmatrix}
+        c_{11} & \cdots & c_{1n} \\
+        \vdots & \ddots & \vdots \\
+        c_{n1} & \cdots & c_{nn}
+    \end{pmatrix} = \begin{pmatrix}
+        c_{11} & \cdots & c_{1n} \\
+        \vdots & \ddots & \vdots \\
+        c_{n1} & \cdots & c_{nn}
+    \end{pmatrix} \begin{pmatrix}
+        \lambda_1 & & \\
+        & \ddots & \\
+        & & \lambda_n
+    \end{pmatrix},
+\end{align*}
+which gives $\lambda_i^k c_{ij} = \lambda_j^k c_{ij}$. Since $\lambda_i > 0, i = 1, \cdots, n$, then $\lambda_i c_{ij} = \lambda_j c_{ij}$, which implies $\Lambda S^{-1} B S = S^{-1} B S \Lambda$. Thus, $AB = BA$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $A$ be a Hermitian matrix and $B = \operatorname{Re} A$, the real part of $A$. Prove that 
+\begin{align*}
+    \max_{\mu \in \sigma(B)} \leq \max_{\lambda \in \sigma(A)},
+\end{align*}
+where $\sigma(A), \sigma(B)$ are the spectrums of $A, B$ respectively.
+\end{exercise}
+\begin{proof}
+Let $B = \frac{A + \bar{A}}{2}$, and both $B$ and $\bar{A}$ are both Hermitian matrices. Also, largest eigenvalues of $A$ and $B$ can be written as
+\begin{align*}
+    \max_{\lambda \in \sigma(A)} \lambda = \max_{x \neq 0} \frac{(x, Ax)}{(x,x)}, \quad \max_{\mu \in \sigma(B)} \mu = \max_{x \neq 0} \frac{(x, Bx)}{(x,x)}.
+\end{align*}
+Then, with $B = \frac{A + \bar{A}}{2}$, we have
+\begin{align*}
+    \max_{x \neq 0} \frac{(x, Bx)}{(x,x)} & = \max_{x \neq 0} \left[\frac{1}{2} \frac{(x, Ax)}{(x,x)} + \frac{1}{2} \frac{(x, \bar{A}x)}{(x,x)} \right] \\
+    & \leq \frac{1}{2} \max_{x \neq 0} \frac{(x, Ax)}{(x,x)} + \frac{1}{2} \max_{x \neq 0} \frac{(x, \bar{A}x)}{(x,x)} \\
+    & \leq \max_{x \neq 0} \frac{(x, Ax)}{(x,x)},
+\end{align*}
+where in the last step we used the fact that $\max \frac{(x, Ax)}{(x,x)} = \max \frac{(x, \Bar{A}x)}{(x,x)}$, since $\Bar{A}$ is conjugate transpose of $A$ and it has the same eigenvalues as $A$. Thus, $\max \mu \leq \max \lambda$.
+\end{proof}
+\begin{remark}
+This problem is the same as Exercise \ref{aug_2018_1} in August 2018 Prelim Exam.
+\end{remark}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Let $A, B: \mathbb{C}^n \to \mathbb{C}^n$ be two orthogonal projections satisfying for any $x \in \mathbb{C}^n$,
+\begin{align*}
+    \left\|Ax\right\|^2 + \left\|Bx\right\|^2 = \left\|x\right\|^2.
+\end{align*}
+Prove that $A + B = I$.
+\end{exercise}
+\begin{proof}
+Suppose $A, B$ are projections on subspace $U, V$ of $\mathbb{C}^n$ respectively. Then, for any $x \in U$, we have $Ax = x$, then by the equation above, we have
+\begin{align*}
+    \left\|Bx\right\| = \left\|x\right\|^2 - \left\|Ax\right\|^2 = 0,
+\end{align*}
+which implies $Bx = 0$. Then, $U \subset N_B = V^\bot$. Also, since $U \oplus U^\bot = \mathbb{C}^n$, then we have $V^\bot + U^\bot = \mathbb{C}^n$. For any $x \in V^\bot \cap U^\bot$, we have
+\begin{align*}
+    \left\|x\right\|^2 = \left\|Ax\right\|^2 + \left\|Bx\right\|^2 = 0,
+\end{align*}
+then we have $x = 0$. Therefore, $V^\bot \oplus U^\bot = \mathbb{C}^n$. 
+
+For any $v \in \mathbb{C}^n$, it can be spanned by vectors in $V^\bot$ and $U^\bot$, that is, $v = u + v$, where $u \in U^\bot, v \in V^\bot$. Then, we have
+\begin{align*}
+    (A + B)v = (A + B)(u + v) = Au + Bv = u + v = v,
+\end{align*}
+and thus, $A + B = I$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Let $A = (a_{ij})$ be an $n \times n$ real matrix satisfying the following diagonally dominant condition
+\begin{align*}
+    \left|a_{ii}\right| > \sum_{j \neq i} \left|a_{ij}\right|, i = 1, 2, \cdots, n.
+\end{align*}
+Prove that $A$ is invertible.
+\end{exercise}
+\begin{proof}
+By Gershgorin circle theorem, every eigenvalue $\lambda$ lies within at least one of the Gershgorin discs $\displaystyle B\left(a_{ii}, r_i\right)$, where 
+\begin{align*}
+    r_i = \sum_{j\neq i}\left|a_{ij}\right|.
+\end{align*}
+Since $\displaystyle \left|a_{ii}\right| > \sum_{j \neq i} \left|a_{ij}\right|$, then no eigenvalue is equal to zero, and thus, $A$ is invertible.
+\end{proof}
+
+\begin{proof}[Proof of Gershgorin circle theorem]
+For eigenvalue $\lambda$ of $A$, find its corresponding eigenvector $x = (x_1, \cdots, x_n)^T$ such that $x_i = 1$ for some $i \in \mathbb{N}$ and $\left|x_j\right| < 1$ for $j \neq i$. Then, by $Ax = \lambda x$, we have
+\begin{align*}
+    \sum^n_{j=1} a_{ij}x_j = \lambda x_i,
+\end{align*}
+which implies
+\begin{align*}
+    \sum_{j\neq i} a_{ij}x_j = \lambda - a_{ii}.
+\end{align*}
+Thus, we have
+\begin{align*}
+    \left|\lambda - a_{ii}\right| = \left|\sum_{j\neq i} a_{ij}x_j\right| \leq \sum_{j\neq i} \left|a_{ij}\right| \left|x_j\right| \leq \sum_{j\neq i} \left|a_{ij}\right|.
+\end{align*}
+\end{proof}
 
 
 \newpage
