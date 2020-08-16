@@ -226,7 +226,7 @@ For any $n \geq 1$, classify the matrices $Q \in \mathbb{R}^{n \times n}$ that a
 
 \begin{exercise}
 ~\begin{enumerate}[label=(\alph*)]
-    \item For a diagonalizable $n \times n$ matrix $A$, show that $\det \left(e^A\right) = \det e^{{\rm trace}\,\, A}$, where $e^A$ is the matrix exponential of $A$: $e^A = \sum^\infty_{k = 0} \frac{1}{k!} A^k$.
+    \item For a diagonalizable $n \times n$ matrix $A$, show that $\det \left(e^A\right) = \det e^{\operatorname{tr}(A)}$, where $e^A$ is the matrix exponential of $A$: $\displaystyle e^A = \sum^\infty_{k = 0} \frac{1}{k!} A^k$.
     
     \item Now for an arbitrary $2 \times 2$ matrix $A$ with trace equal to $0$, show that $\det \left(e^A\right) = 1$.
 \end{enumerate}
@@ -235,9 +235,9 @@ For any $n \geq 1$, classify the matrices $Q \in \mathbb{R}^{n \times n}$ that a
 ~\begin{enumerate}[label=(\alph*)]
     \item Since $A$ is diagonalizable, then there exists an invertible matrix $S$ such that $A = S \Lambda S^{-1}$. Then, $e^A = S e^\Lambda S^{-1}$, and we have
     \begin{align*}
-        \det e^A = \det e^\Lambda = \prod^J_{j=1} e^{\lambda_j} = \det e^{{\rm trace}\,\, A},
+        \det e^A = \det e^\Lambda = \prod^J_{j=1} e^{\lambda_j} = \det e^{\operatorname{tr}(A)},
     \end{align*}
-    where $\lambda_j$ is eigenvalue of $A$ and in the last step we usd $\sum^J_{i = 1} \lambda_j = {\rm trace}\,\, A$\cite{5}. \footnote{Suppose $A = S J_A S^{-1}$, where $J_A$ is Jordan form of $A$ with diagonal entries $\lambda_j$. Then, ${\rm tr} (A) = {\rm tr} \left(S J_A S^{-1} \right) = {\rm tr} \left(S S^{-1} J_A \right) = {\rm tr} \left(J_A \right) = \sum \lambda_j$.}
+    where $\lambda_j$ is eigenvalue of $A$ and in the last step we usd $\displaystyle \sum^J_{i = 1} \lambda_j = \operatorname{tr}(A)$\cite{5}. \footnote{Suppose $A = S J_A S^{-1}$, where $J_A$ is Jordan form of $A$ with diagonal entries $\lambda_j$. Then, $\displaystyle  \operatorname{tr}(A) = \operatorname{tr} \left(S J_A S^{-1} \right) = \operatorname{tr} \left(S S^{-1} J_A \right) = {\rm tr} \left(J_A \right) = \sum \lambda_j$.}
     
     \item \begin{enumerate}[label = \arabic*)]
         \item For $A$ diagonalizable, then it follows from $(a)$. 
@@ -373,17 +373,19 @@ Let $A$ be a Hermitian matrix and $B = \Re A$, the real part of $A$. Show that
 where $\sigma(A)$ and $\sigma(B)$ are the spectrums of $A$ and $B$ respectively.
 \end{exercise}
 \begin{proof}
-Let $B = \frac{A + \bar{A}}{2}$, and both $B$ and $\bar{A}$ are both Hermitian matrices. Also, largest eigenvalues of $A$ and $B$ can be written as
+Let $B = (A + \bar{A}) / 2$, and both $B$ and $\bar{A}$ are both Hermitian matrices. Also, largest eigenvalues of $A$ and $B$ can be written as
 \begin{align*}
     \max_{\lambda \in \sigma(A)} \lambda = \max_{x \neq 0} \frac{(x, Ax)}{(x,x)}, \quad \max_{\mu \in \sigma(B)} \mu = \max_{x \neq 0} \frac{(x, Bx)}{(x,x)}.
 \end{align*}
-Then, with $B = \frac{A + \bar{A}}{2}$, we have
+Then, with $B = (A + \bar{A}) / 2$, we have
 \begin{align*}
     \max_{x \neq 0} \frac{(x, Bx)}{(x,x)} & = \max_{x \neq 0} \left[\frac{1}{2} \frac{(x, Ax)}{(x,x)} + \frac{1}{2} \frac{(x, \bar{A}x)}{(x,x)} \right] \\
     & \leq \frac{1}{2} \max_{x \neq 0} \frac{(x, Ax)}{(x,x)} + \frac{1}{2} \max_{x \neq 0} \frac{(x, \bar{A}x)}{(x,x)} \\
     & \leq \max_{x \neq 0} \frac{(x, Ax)}{(x,x)},
 \end{align*}
-where in the last step we used the fact that $\max \frac{(x, Ax)}{(x,x)} = \max \frac{(x, \Bar{A}x)}{(x,x)}$, since $\Bar{A}$ is conjugate transpose of $A$ and it has the same eigenvalues as $A$. Thus, $\max \mu \leq \max \lambda$.
+where in the last step we used the fact that
+$$\max \frac{(x, Ax)}{(x,x)} = \max \frac{(x, \Bar{A}x)}{(x,x)}, $$
+since $\Bar{A}$ is conjugate transpose of $A$ and it has the same eigenvalues as $A$. Thus, $\max \mu \leq \max \lambda$.
 \end{proof}
 
 \begin{proof}[Second Proof of Exercise \ref{aug_2018_1}]
@@ -395,7 +397,7 @@ Thus, $\mu_1 = \max \mu \leq \max \lambda$.
 \end{proof}
 
 \begin{remark}
-There is a similar result, $\min_{\lambda \in \sigma(A)} \lambda \leq \min_{\mu \in \sigma(B)} \mu$.
+There is a similar result, $\displaystyle \min_{\lambda \in \sigma(A)} \lambda \leq \min_{\mu \in \sigma(B)} \mu$.
 \end{remark}
 
 \medskip
@@ -454,7 +456,7 @@ Let $A, B$ be two square complex matrices.
         & = \sum^\infty_{k=0} \frac{A^k}{k!} \sum^\infty_{j=0} \frac{B^j}{j!} = e^A e^B.
     \end{align*}
     
-    \item If $AB \neq BA$, then $(A + B)^k \neq \sum^k_{j=0}\binom{k}{j}A^k B^{k-j}$. Thus the equality does not hold in general.
+    \item If $AB \neq BA$, then $\displaystyle (A + B)^k \neq \sum^k_{j=0}\binom{k}{j}A^k B^{k-j}$. Thus the equality does not hold in general.
 \end{enumerate}
 \end{proof}
 
@@ -484,13 +486,13 @@ and hence $\det (A + B) = 0$.
 \medskip
 
 \begin{exercise}
-Prove that a complex $3 \times 3$ matrix $A$ is nilpotent if and only if $\Tr \left(A^k\right) = 0$ for $k = 1, 2, 3$.
+Prove that a complex $3 \times 3$ matrix $A$ is nilpotent if and only if $\operatorname{tr} \left(A^k\right) = 0$ for $k = 1, 2, 3$.
 \end{exercise}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
-    \item ($\Rightarrow$) Since $A$ is nilpotent, then all eigenvalues are zero. Then, $\Tr \left(A\right) = 0$. Also, $A$ is unitary similar to an upper triangular matrix $T$, whose diagonal entries are eigenvalues, and it follows naturally that $\Tr \left(A^k\right) = 0, k = 2, 3$.
+    \item ($\Rightarrow$) Since $A$ is nilpotent, then all eigenvalues are zero. Then, $\operatorname{tr} \left(A\right) = 0$. Also, $A$ is unitary similar to an upper triangular matrix $T$, whose diagonal entries are eigenvalues, and it follows naturally that $\operatorname{tr} \left(A^k\right) = 0, k = 2, 3$.
     
-    \item Denote by $x, y, z$ the eigenvalues of $A$, and consider upper triangular matrix $T$ which is similar to $A$. Since $\Tr \left(A^k\right) = 0$ for $k = 1, 2, 3$, then so does $T$. Then,
+    \item Denote by $x, y, z$ the eigenvalues of $A$, and consider upper triangular matrix $T$ which is similar to $A$. Since $\operatorname{tr} \left(A^k\right) = 0$ for $k = 1, 2, 3$, then so does $T$. Then,
     \begin{align*}
         \begin{cases}
             x + y + z = 0, \\
@@ -509,7 +511,7 @@ For an invertible matrix $P \in \mathbb{R}^{n \times n}$, let $T_P: \mathbb{R}^{
 \begin{enumerate}[label=(\alph*)]
     \item For an orthogonal matrix $O$, show that the space $S(n) \subset \mathbb{R}^{n \times n}$ of symmetric $n \times n$ matrices is invariant under $T_O$.
     
-    \item Now let $O$ be the $3 \times 3$ rotation matrix:
+    \item* Now let $O$ be the $3 \times 3$ rotation matrix:
     \begin{align*}
         O = \begin{pmatrix}
             0 & -1 & 0 \\
@@ -525,7 +527,7 @@ For an invertible matrix $P \in \mathbb{R}^{n \times n}$, let $T_P: \mathbb{R}^{
 ~\begin{enumerate}[label=(\alph*)]
     \item Since $O$ is orthogonal matrix, then for any $S \in S(n)$, $T_O = OSO^{-1} = OSO^T$. Then, $\left(OSO^T\right)^T = OS^TO^T = OSO^T$, since $S$ is symmetric. Thus, $T_O$ is also a symmetric matrix, and hence $S(n)$ is invariant under $T_O$.
     
-    \item* Note that 
+    \item Note that 
     \begin{align*}
         T_{O_1}T_{O_2}(S) = O_1 O_2 S O_2^T O_1^T = T_{O_1 O_2}(S),
     \end{align*}
@@ -631,7 +633,7 @@ Let $\dim V = n$. Since $TU - UT$ is nonnegative, then there exists an orthogona
 
 Also, since
 \begin{align*}
-    \Tr (TU - UT) = \Tr(TU) - \Tr(UT) = 0,
+    \operatorname{tr} (TU - UT) = \operatorname{tr}(TU) - \operatorname{tr}(UT) = 0,
 \end{align*}
 then $TU - UT$ is zero matrix under basis $\mathcal{B}$. 
 
@@ -902,7 +904,7 @@ Let $A \in \mathbb{C}^{n \times n}$ be an arbitrary matrix.
             & = \det(A)^m [(A^t)^{-1}]^m = \operatorname{cof}(A)^m.
         \end{align*}
         
-        \item If $A$ is not invertible. Then there exists $\varepsilon > 0$ such that $A_\varepsilon = \varepsilon I + A$ is invertible. Then, by (a), we have $\operatorname{cof}(A_\varepsilon^m) = \operatorname{cof}(A_\varepsilon)^m$. Also, since $\varepsilon I$ and $A$ commute, then $A_\varepsilon^m = \sum^{n+1}_{i=0} \binom{n}{i} (\varepsilon I)^i A^{n+1-i}$. Letting $\varepsilon \to 0$, then $\lim_{\varepsilon \to 0} A_\varepsilon = A$ and hence $\operatorname{cof}(A^m) = \operatorname{cof}(A)^m$.
+        \item If $A$ is not invertible. Then there exists $\varepsilon > 0$ such that $A_\varepsilon = \varepsilon I + A$ is invertible. Then, by (a), we have $\operatorname{cof}(A_\varepsilon^m) = \operatorname{cof}(A_\varepsilon)^m$. Also, since $\varepsilon I$ and $A$ commute, then $\displaystyle A_\varepsilon^m = \sum^{n+1}_{i=0} \binom{n}{i} (\varepsilon I)^i A^{n+1-i}$. Letting $\varepsilon \to 0$, then $\lim_{\varepsilon \to 0} A_\varepsilon = A$ and hence $\operatorname{cof}(A^m) = \operatorname{cof}(A)^m$.
     \end{enumerate}
     
     \item For any $A, B \in \mathbb{C}^{2 \times 2}$ and $c \in \mathbb{R}$, let
@@ -943,18 +945,18 @@ Let $A \in \mathbb{C}^{n \times n}$ be an arbitrary matrix.
 \begin{exercise}\label{Aug_2017_2}
 Let $A$ and $B$ be two Hermitian complex matrices.
 \begin{enumerate}[label=(\alph*)]
-    \item Prove that $\Tr(AB)$ is real. 
+    \item Prove that $\operatorname{tr}(AB)$ is real. 
     
-    \item Prove that if $A, B$ are positive, then $\Tr(AB) > 0$.
+    \item Prove that if $A, B$ are positive, then $\operatorname{tr}(AB) > 0$.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
     \item Let $A = \left(a_{ij}\right)_{n \times n}$, $B = \left(b_{ij}\right)_{n \times n}$, and then $a_{ij} = \overline{a_{ji}}, b_{ij} = \overline{b_{ji}}$. Then we have
     \begin{align*}
-        \Tr(AB) = \sum^n_{i=1} \sum^n_{j=1} a_{ij} b_{ji} = \sum^n_{i=1} \sum^n_{j=1} \overline{a_{ji}} \overline{b_{ij}} =  \sum^n_{i=1} \sum^n_{j=1} \overline{a_{ji} b_{ij}} = \overline{\sum^n_{i=1} \sum^n_{j=1} a_{ji} b_{ij}} = \overline{\Tr(AB)},
+        \operatorname{tr}(AB) = \sum^n_{i=1} \sum^n_{j=1} a_{ij} b_{ji} = \sum^n_{i=1} \sum^n_{j=1} \overline{a_{ji}} \overline{b_{ij}} =  \sum^n_{i=1} \sum^n_{j=1} \overline{a_{ji} b_{ij}} = \overline{\sum^n_{i=1} \sum^n_{j=1} a_{ji} b_{ij}} = \overline{ \operatorname{tr} (AB)},
     \end{align*}
-    and thus $\Tr(AB)$ is real. 
+    and thus $\operatorname{tr}(AB)$ is real. 
     
     \item Since $B$ is Hermitian, then $B$ can be diagonalized by a unitary matrix $P$ such that $B = P \Lambda P^*$, where $\Lambda$ is diagonal matrix with entries being eigenvalues of $B$. Since $B > 0$, then all eigenvalues of $B$ is positive, denoted by $\lambda_1, \cdots, \lambda_n$.
     
@@ -964,8 +966,8 @@ Let $A$ and $B$ be two Hermitian complex matrices.
     \end{align*}
     Let $x = e_i$ be the standard basis, then the above inequality implies that the diagonal entries $d_i$ of $P^*AP$ are all positive. Since similar matrix has same trace, then
     \begin{align*}
-        \Tr(AB) & = \Tr\left(P^*ABP\right) = \Tr \left(P^*APP^*BP\right) \\
-        & = \Tr \left(P^*AP \Lambda\right) = \sum^n_{i=1} d_i \lambda_i > 0.
+        \operatorname{tr}(AB) & = \operatorname{tr}\left(P^*ABP\right) = \operatorname{tr} \left(P^*APP^*BP\right) \\
+        & = \operatorname{tr} \left(P^*AP \Lambda\right) = \sum^n_{i=1} d_i \lambda_i > 0.
     \end{align*}
 \end{enumerate}
 \end{proof}
@@ -981,7 +983,7 @@ then $AB$ is similar with $A^{\frac{1}{2}} B A^{\frac{1}{2}}$. For any $x \in \m
 \end{align*}
 and hence $A^{\frac{1}{2}} B A^{\frac{1}{2}}$ is positive. Since similar matrix has the same trace, thus,
 \begin{align*}
-    \Tr(AB) = \Tr \left(A^{\frac{1}{2}} B A^{\frac{1}{2}} \right) > 0.
+    \operatorname{tr}(AB) = \operatorname{tr} \left(A^{\frac{1}{2}} B A^{\frac{1}{2}} \right) > 0.
 \end{align*}
 \end{proof}
 
@@ -1095,7 +1097,7 @@ Let $R \in O(4)$.
     \end{align*}
     Then, no matter how many eigenvalues $R$ has, $R$ always admits an invariant subspace of dimension $2$. Indeed,
     \begin{enumerate}[label=\arabic*)]
-        \item If $p_R = \prod^4_{i=1} (\lambda - \lambda_i)$, then each eigenvalue has an eigenvector $x_i, i = 1,2,3,4$. Choose any two vectors $x_j, x_k \in \{x_i\}^4_{i=1}$ and then $\operatorname{span}\{x_j, x_k\}$ is an invariant subspace.
+        \item If $\displaystyle p_R = \prod^4_{i=1} (\lambda - \lambda_i)$, then each eigenvalue has an eigenvector $x_i, i = 1,2,3,4$. Choose any two vectors $x_j, x_k \in \{x_i\}^4_{i=1}$ and then $\operatorname{span}\{x_j, x_k\}$ is an invariant subspace.
         
         \item If $p_R = (\lambda - \lambda_1)(\lambda - \lambda_2)(\lambda - \lambda_3)^2$, then $\dim N_{\lambda - \lambda_3 I} = 2$, which is an invariant subspace. 
         
@@ -1179,7 +1181,7 @@ then $A = A^+ + i A^{-}$. Also, $A^+$ and $A^{-}$ are all Hermitian. Then, by (a
 \begin{proof}[Second Proof of Exercise \ref{Aug_2017_6}]
 Let $(,)$ be the Hilbert-Schmidt inner product on $\mathbb{C}^{n \times n}$, i.e. for $A, B \in \mathbb{C}^{n \times n}$, 
 \begin{align*}
-    A:B = \Tr\left(A^*B\right).
+    A:B = \operatorname{tr}\left(A^*B\right).
 \end{align*}
 Let $W = \operatorname{span} {\rm U}(n)$, then $W$ is a subspace of $\mathbb{C}^{n \times n}$. Then, we have
 \begin{align*}
@@ -1256,7 +1258,7 @@ Let $v_j = \sqrt{d}p_{ji}$ for $j = 1, \cdots, n$, then we have
 \begin{exercise}{\rm *}
 Let $O(n)$ be the set of orthogonal matrices in $\mathbb{R}^{n \times n}$. We define the set of special orthogonal matrices by
 \begin{align*}
-    SO(n) = \left\{R \in O(n) \subset \mathbb{R}^{n \times n} | \det R = 1 \right\}.
+    SO(n) = \left\{R \in O(n) \subset \mathbb{R}^{n \times n}\, |\, \det R = 1 \right\}.
 \end{align*}
 \begin{enumerate}[label=(\alph*)]
     \item Let $W = \operatorname{span} SO(2)$. Find a basis for $W$.
@@ -1298,10 +1300,10 @@ Let $O(n)$ be the set of orthogonal matrices in $\mathbb{R}^{n \times n}$. We de
     \end{align*}
     which implies that $\{B_1, B_2\}$ is a basis for $W$.
     
-    \item If $A \in W^\bot$, then $\Tr(AE_i^*) = 0, i = 1, 2$. Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, then 
+    \item If $A \in W^\bot$, then $\operatorname{tr} (AE_i^*) = 0, i = 1, 2$. Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, then 
     \begin{align*}
-        \Tr\left(AE_1^*\right) & = a + d = 0, \\
-        \Tr\left(AE_2^*\right) & = c - b = 0.
+        \operatorname{tr}\left(AE_1^*\right) & = a + d = 0, \\
+        \operatorname{tr}\left(AE_2^*\right) & = c - b = 0.
     \end{align*}
     Thus, we have
     \begin{align*}
@@ -1314,7 +1316,7 @@ Let $O(n)$ be the set of orthogonal matrices in $\mathbb{R}^{n \times n}$. We de
     \end{align*}
     Then, if $A \in W \cap W^\bot$, then $A = 0$, which implies $W \cap W^\bot = \{0\}$. Since $\dim W + \dim W^\bot = 2$, then we have $\mathbb{R}^{2 \times 2} = W \oplus W^\bot$.
     
-    Then, for any $A \in \mathbb{R}^{2 \times 2}$, there exists $W_1 \in W$ and $W_2 \in W^\bot$ such that $A = W_1 + W_2$. Let $W_1 = \begin{pmatrix} x_1 & y_1 \\ y_1 & -x_1 \end{pmatrix}$ and $W_2 = \begin{pmatrix} x_2 & y_2 \\ y_2 & -x_2 \end{pmatrix}$, then $\frac{W_1}{\sqrt{x_1^2 + y_1^2}}$ and $\frac{W_2}{\sqrt{x_2^2 + y_2^2}}$ are an orthogonal matrix, denoted by $R_1, R_2$. Thus, we have
+    Then, for any $A \in \mathbb{R}^{2 \times 2}$, there exists $W_1 \in W$ and $W_2 \in W^\bot$ such that $A = W_1 + W_2$. Let $W_1 = \begin{pmatrix} x_1 & y_1 \\ y_1 & -x_1 \end{pmatrix}$ and $W_2 = \begin{pmatrix} x_2 & y_2 \\ y_2 & -x_2 \end{pmatrix}$, then $\displaystyle \frac{W_1}{\sqrt{x_1^2 + y_1^2}}$ and $\displaystyle \frac{W_2}{\sqrt{x_2^2 + y_2^2}}$ are an orthogonal matrix, denoted by $R_1, R_2$. Thus, we have
     \begin{align*}
         A = \alpha_1 R_1 + \alpha_2 R_2,
     \end{align*}
@@ -1522,9 +1524,9 @@ Suppose $A \in \mathbb{R}^{n \times n}$ is anti-symmetric, i.e. $A^T = - A$ and 
     \end{align*}
     Indeed, observing simple $4 \times 4$ anti-symmetric matrix would gives us this result. Then, $\operatorname{cof}(A)^T = - \operatorname{cof}(A)$. Then, for symmetric matrix $B \in \mathbb{R}^{n \times n}$, then we have
     \begin{align*}
-        \Tr(\operatorname{cof}(A) B^*) = \Tr(B \operatorname{cof}(A)^T) = \Tr(- B \operatorname{cof}(A)^T) = - \Tr(\operatorname{cof}(A) B^*),
+        \operatorname{tr}(\operatorname{cof}(A) B^*) = \operatorname{tr}(B \operatorname{cof}(A)^T) = \operatorname{tr}(- B \operatorname{cof}(A)^T) = - \operatorname{tr}(\operatorname{cof}(A) B^*),
     \end{align*}
-    which implies $\operatorname{cof}(A):B = \Tr(\operatorname{cof}(A) B^*) = 0$.
+    which implies $\operatorname{cof}(A):B = \operatorname{tr}(\operatorname{cof}(A) B^*) = 0$.
     
     \item Since $B$ is symmetric, then $B$ is unitarily diagonalizable, that is, there exists a unitary matrix $U$ such that $B = U \Lambda U^*$, where $\Lambda$ is diagonal. Also, since $\operatorname{rank}(B) = 1$, then there is only one diagonal entry in $\Lambda$, denoted by $\lambda_1$.
     
@@ -1803,7 +1805,7 @@ Let $A$ and $B$ be $n \times n$ complex matrices. Show that $AB$ and $BA$ have t
     \end{align*}
     then $\det (BA - \lambda I) = 0$, which implies $\lambda$ is also an eigenvalue for $BA$. Thus, $AB$ and $BA$ have the same characteristic polynomial.
     
-    If $A$ is not invertible, then there exists $\varepsilon_k > 0$ such that $\lim_{k\to\infty} \varepsilon_k = 0$ and $A_k = A + \varepsilon_k I$ is invertible. Then, by the statement before, $A_kB$ and $BA_k$ have the same characteristic polynomial. Since $AB = \lim_{k\to\infty}A_kB$ and $BA = \lim_{k\to\infty}BA_k$, then $AB$ and $BA$ have the same characteristic polynomial.
+    If $A$ is not invertible, then there exists $\varepsilon_k > 0$ such that $\displaystyle \lim_{k\to\infty} \varepsilon_k = 0$ and $A_k = A + \varepsilon_k I$ is invertible. Then, by the statement before, $A_kB$ and $BA_k$ have the same characteristic polynomial. Since $\displaystyle AB = \lim_{k\to\infty}A_kB$ and $\displaystyle BA = \lim_{k\to\infty}BA_k$, then $AB$ and $BA$ have the same characteristic polynomial.
     
     \item In general, $AB$ and $BA$ does not have the same minimal polynomial. Let
     \begin{align*}
@@ -1939,7 +1941,7 @@ Let $v \in \mathbb{C}^n$ be a nonzero vector (written as a clomun vector) and le
             x_1x_n & x_2x_n & \cdots & x_n^2
         \end{pmatrix}.
     \end{align*}
-    Also, we have $M^2 = cM$, where $c = \sum^n_{i=1} x_i^2$. Then, $\lambda^2 - c\lambda$ is a polynomial of $M$ that annihilates $M$. Since $M \neq 0$, then $\lambda$ is not the minimal polynomial of $M$. If $M - cI = 0$, then $x_i^2 - \sum^n_{j=1}x_j^2 = 0$ for each $i$, which implies $x_i = 0$ for each $i$. This is a contradiction with the fact that $v \neq 0$. Thus, the minila polynomial of $M$ is $m_M(\lambda) = \lambda^2 - c \lambda$.
+    Also, we have $M^2 = cM$, where $\displaystyle c = \sum^n_{i=1} x_i^2$. Then, $\lambda^2 - c\lambda$ is a polynomial of $M$ that annihilates $M$. Since $M \neq 0$, then $\lambda$ is not the minimal polynomial of $M$. If $M - cI = 0$, then $\displaystyle x_i^2 - \sum^n_{j=1}x_j^2 = 0$ for each $i$, which implies $x_i = 0$ for each $i$. This is a contradiction with the fact that $v \neq 0$. Thus, the minila polynomial of $M$ is $m_M(\lambda) = \lambda^2 - c \lambda$.
     
     For eigenvalue $0$, let $y = (y_1, \cdots, y_n)$ be eigenvector of $M$. Then, we have $My = 0$, which implies $x_i \sum^n_{j=1} x_j y_i = 0$ for each $i$. Since $v \neq 0$, then at least one of $x_i$ is nonzero, and we can assume $x_n \neq 0$. Then, we can have eigenvectors
     \begin{align*}
@@ -2163,7 +2165,7 @@ Let $A(t)$ be a differentiable $n \times n$ matrix valued function. Is it always
 Prove it or provide a counter example.
 \end{exercise}
 \begin{proof}
-For $n = 1$, and $A(t)$ is a function of one variable, then it is true that $\dv[]{}{t} A^2(t) = 2 A(t) \dv[]{A(t)}{t}$.
+For $n = 1$, and $A(t)$ is a function of one variable, then it is true that $\displaystyle \dv[]{}{t} A^2(t) = 2 A(t) \dv[]{A(t)}{t}$.
 
 For $n \geq 2$, the statement is not always true. For example, let $A(t) = \begin{pmatrix} 0 & \sin x \\ \cos x & 0 \end{pmatrix}$, then
 \begin{align*}
@@ -2198,7 +2200,7 @@ Let $\Pi$ be the plane in $\mathbb{R}^3$ defined by
 Let $T$ be the reflection in $\mathbb{R}^3$ about the plane $\Pi$. Find the matrix representation of $T$.
 \end{exercise}
 \begin{proof}
-For any $x \in \mathbb{R}^3$, its reflection about the plane $\Pi$ is $Tx = x - 2 \frac{(x, u)}{(u,u)}u$, where $u$ is the vector that is orthogonal to $\Pi$ and $u = (3, 2, 1)^T$. Thus, we have
+For any $x \in \mathbb{R}^3$, its reflection about the plane $\Pi$ is $\displaystyle Tx = x - 2 \frac{(x, u)}{(u,u)}u$, where $u$ is the vector that is orthogonal to $\Pi$ and $u = (3, 2, 1)^T$. Thus, we have
 \begin{align*}
     T = I - 2 \frac{uu^T}{(u,u)} = \frac{1}{14} \begin{pmatrix}
         -4 & -12 & -6 \\
@@ -2409,7 +2411,7 @@ form a basis for $X/Y$. It suffices to show that they span $X/Y$ and they are li
     \begin{align*}
         \sum^n_{k=m+1} c_k \{x_k\} = 0,
     \end{align*}
-    which implies $\sum^n_{k=m+1} c_k x_k = y$ for some $y \in Y$. We can express $y$ as $\sum^m_{i=1} a_i y_i$, then 
+    which implies $\displaystyle \sum^n_{k=m+1} c_k x_k = y$ for some $y \in Y$. We can express $y$ as $\displaystyle \sum^m_{i=1} a_i y_i$, then 
     \begin{align*}
         \sum^n_{k=m+1} c_k x_k - \sum^m_{i=1} a_i y_i = 0.
     \end{align*}
@@ -2635,17 +2637,19 @@ Let $A$ be a Hermitian matrix and $B = \operatorname{Re} A$, the real part of $A
 where $\sigma(A), \sigma(B)$ are the spectrums of $A, B$ respectively.
 \end{exercise}
 \begin{proof}
-Let $B = \frac{A + \bar{A}}{2}$, and both $B$ and $\bar{A}$ are both Hermitian matrices. Also, largest eigenvalues of $A$ and $B$ can be written as
+Let $B = (A + \bar{A}) / 2$, and both $B$ and $\bar{A}$ are both Hermitian matrices. Also, largest eigenvalues of $A$ and $B$ can be written as
 \begin{align*}
     \max_{\lambda \in \sigma(A)} \lambda = \max_{x \neq 0} \frac{(x, Ax)}{(x,x)}, \quad \max_{\mu \in \sigma(B)} \mu = \max_{x \neq 0} \frac{(x, Bx)}{(x,x)}.
 \end{align*}
-Then, with $B = \frac{A + \bar{A}}{2}$, we have
+Then, with $B = (A + \bar{A}) / 2$, we have
 \begin{align*}
     \max_{x \neq 0} \frac{(x, Bx)}{(x,x)} & = \max_{x \neq 0} \left[\frac{1}{2} \frac{(x, Ax)}{(x,x)} + \frac{1}{2} \frac{(x, \bar{A}x)}{(x,x)} \right] \\
     & \leq \frac{1}{2} \max_{x \neq 0} \frac{(x, Ax)}{(x,x)} + \frac{1}{2} \max_{x \neq 0} \frac{(x, \bar{A}x)}{(x,x)} \\
     & \leq \max_{x \neq 0} \frac{(x, Ax)}{(x,x)},
 \end{align*}
-where in the last step we used the fact that $\max \frac{(x, Ax)}{(x,x)} = \max \frac{(x, \Bar{A}x)}{(x,x)}$, since $\Bar{A}$ is conjugate transpose of $A$ and it has the same eigenvalues as $A$. Thus, $\max \mu \leq \max \lambda$.
+where in the last step we used the fact that 
+$$\max \frac{(x, Ax)}{(x,x)} = \max \frac{(x, \Bar{A}x)}{(x,x)},$$
+since $\Bar{A}$ is conjugate transpose of $A$ and it has the same eigenvalues as $A$. Thus, $\max \mu \leq \max \lambda$.
 \end{proof}
 \begin{remark}
 This problem is the same as Exercise \ref{aug_2018_1} in August 2018 Prelim Exam.
