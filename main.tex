@@ -226,7 +226,7 @@ For any $n \geq 1$, classify the matrices $Q \in \mathbb{R}^{n \times n}$ that a
 
 \begin{exercise}
 ~\begin{enumerate}[label=(\alph*)]
-    \item For a diagonalizable $n \times n$ matrix $A$, show that $\det \left(e^A\right) = \det e^{\operatorname{tr}(A)}$, where $e^A$ is the matrix exponential of $A$: $\displaystyle e^A = \sum^\infty_{k = 0} \frac{1}{k!} A^k$.
+    \item For a diagonalizable $n \times n$ matrix $A$, show that $\det \left(e^A\right) = \det e^{\operatorname{tr}(A)}$, where $e^A$ is the matrix exponential of $A$: $  e^A = \sum^\infty_{k = 0} \frac{1}{k!} A^k$.
     
     \item Now for an arbitrary $2 \times 2$ matrix $A$ with trace equal to $0$, show that $\det \left(e^A\right) = 1$.
 \end{enumerate}
@@ -237,7 +237,7 @@ For any $n \geq 1$, classify the matrices $Q \in \mathbb{R}^{n \times n}$ that a
     \begin{align*}
         \det e^A = \det e^\Lambda = \prod^J_{j=1} e^{\lambda_j} = \det e^{\operatorname{tr}(A)},
     \end{align*}
-    where $\lambda_j$ is eigenvalue of $A$ and in the last step we usd $\displaystyle \sum^J_{i = 1} \lambda_j = \operatorname{tr}(A)$\cite{5}. \footnote{Suppose $A = S J_A S^{-1}$, where $J_A$ is Jordan form of $A$ with diagonal entries $\lambda_j$. Then, $\displaystyle  \operatorname{tr}(A) = \operatorname{tr} \left(S J_A S^{-1} \right) = \operatorname{tr} \left(S S^{-1} J_A \right) = {\rm tr} \left(J_A \right) = \sum \lambda_j$.}
+    where $\lambda_j$ is eigenvalue of $A$ and in the last step we usd $  \sum^J_{i = 1} \lambda_j = \operatorname{tr}(A)$\cite{5}. \footnote{Suppose $A = S J_A S^{-1}$, where $J_A$ is Jordan form of $A$ with diagonal entries $\lambda_j$. Then, $   \operatorname{tr}(A) = \operatorname{tr} \left(S J_A S^{-1} \right) = \operatorname{tr} \left(S S^{-1} J_A \right) = {\rm tr} \left(J_A \right) = \sum \lambda_j$.}
     
     \item \begin{enumerate}[label = \arabic*)]
         \item For $A$ diagonalizable, then it follows from $(a)$. 
@@ -397,7 +397,7 @@ Thus, $\mu_1 = \max \mu \leq \max \lambda$.
 \end{proof}
 
 \begin{remark}
-There is a similar result, $\displaystyle \min_{\lambda \in \sigma(A)} \lambda \leq \min_{\mu \in \sigma(B)} \mu$.
+There is a similar result, $  \min_{\lambda \in \sigma(A)} \lambda \leq \min_{\mu \in \sigma(B)} \mu$.
 \end{remark}
 
 \medskip
@@ -456,7 +456,7 @@ Let $A, B$ be two square complex matrices.
         & = \sum^\infty_{k=0} \frac{A^k}{k!} \sum^\infty_{j=0} \frac{B^j}{j!} = e^A e^B.
     \end{align*}
     
-    \item If $AB \neq BA$, then $\displaystyle (A + B)^k \neq \sum^k_{j=0}\binom{k}{j}A^k B^{k-j}$. Thus the equality does not hold in general.
+    \item If $AB \neq BA$, then $  (A + B)^k \neq \sum^k_{j=0}\binom{k}{j}A^k B^{k-j}$. Thus the equality does not hold in general.
 \end{enumerate}
 \end{proof}
 
@@ -904,7 +904,7 @@ Let $A \in \mathbb{C}^{n \times n}$ be an arbitrary matrix.
             & = \det(A)^m [(A^t)^{-1}]^m = \operatorname{cof}(A)^m.
         \end{align*}
         
-        \item If $A$ is not invertible. Then there exists $\varepsilon > 0$ such that $A_\varepsilon = \varepsilon I + A$ is invertible. Then, by (a), we have $\operatorname{cof}(A_\varepsilon^m) = \operatorname{cof}(A_\varepsilon)^m$. Also, since $\varepsilon I$ and $A$ commute, then $\displaystyle A_\varepsilon^m = \sum^{n+1}_{i=0} \binom{n}{i} (\varepsilon I)^i A^{n+1-i}$. Letting $\varepsilon \to 0$, then $\lim_{\varepsilon \to 0} A_\varepsilon = A$ and hence $\operatorname{cof}(A^m) = \operatorname{cof}(A)^m$.
+        \item If $A$ is not invertible. Then there exists $\varepsilon > 0$ such that $A_\varepsilon = \varepsilon I + A$ is invertible. Then, by (a), we have $\operatorname{cof}(A_\varepsilon^m) = \operatorname{cof}(A_\varepsilon)^m$. Also, since $\varepsilon I$ and $A$ commute, then $  A_\varepsilon^m = \sum^{n+1}_{i=0} \binom{n}{i} (\varepsilon I)^i A^{n+1-i}$. Letting $\varepsilon \to 0$, then $\lim_{\varepsilon \to 0} A_\varepsilon = A$ and hence $\operatorname{cof}(A^m) = \operatorname{cof}(A)^m$.
     \end{enumerate}
     
     \item For any $A, B \in \mathbb{C}^{2 \times 2}$ and $c \in \mathbb{R}$, let
@@ -1097,7 +1097,7 @@ Let $R \in O(4)$.
     \end{align*}
     Then, no matter how many eigenvalues $R$ has, $R$ always admits an invariant subspace of dimension $2$. Indeed,
     \begin{enumerate}[label=\arabic*)]
-        \item If $\displaystyle p_R = \prod^4_{i=1} (\lambda - \lambda_i)$, then each eigenvalue has an eigenvector $x_i, i = 1,2,3,4$. Choose any two vectors $x_j, x_k \in \{x_i\}^4_{i=1}$ and then $\operatorname{span}\{x_j, x_k\}$ is an invariant subspace.
+        \item If $  p_R = \prod^4_{i=1} (\lambda - \lambda_i)$, then each eigenvalue has an eigenvector $x_i, i = 1,2,3,4$. Choose any two vectors $x_j, x_k \in \{x_i\}^4_{i=1}$ and then $\operatorname{span}\{x_j, x_k\}$ is an invariant subspace.
         
         \item If $p_R = (\lambda - \lambda_1)(\lambda - \lambda_2)(\lambda - \lambda_3)^2$, then $\dim N_{\lambda - \lambda_3 I} = 2$, which is an invariant subspace. 
         
@@ -1316,7 +1316,7 @@ Let $O(n)$ be the set of orthogonal matrices in $\mathbb{R}^{n \times n}$. We de
     \end{align*}
     Then, if $A \in W \cap W^\bot$, then $A = 0$, which implies $W \cap W^\bot = \{0\}$. Since $\dim W + \dim W^\bot = 2$, then we have $\mathbb{R}^{2 \times 2} = W \oplus W^\bot$.
     
-    Then, for any $A \in \mathbb{R}^{2 \times 2}$, there exists $W_1 \in W$ and $W_2 \in W^\bot$ such that $A = W_1 + W_2$. Let $W_1 = \begin{pmatrix} x_1 & y_1 \\ y_1 & -x_1 \end{pmatrix}$ and $W_2 = \begin{pmatrix} x_2 & y_2 \\ y_2 & -x_2 \end{pmatrix}$, then $\displaystyle \frac{W_1}{\sqrt{x_1^2 + y_1^2}}$ and $\displaystyle \frac{W_2}{\sqrt{x_2^2 + y_2^2}}$ are an orthogonal matrix, denoted by $R_1, R_2$. Thus, we have
+    Then, for any $A \in \mathbb{R}^{2 \times 2}$, there exists $W_1 \in W$ and $W_2 \in W^\bot$ such that $A = W_1 + W_2$. Let $W_1 = \begin{pmatrix} x_1 & y_1 \\ y_1 & -x_1 \end{pmatrix}$ and $W_2 = \begin{pmatrix} x_2 & y_2 \\ y_2 & -x_2 \end{pmatrix}$, then $  \frac{W_1}{\sqrt{x_1^2 + y_1^2}}$ and $  \frac{W_2}{\sqrt{x_2^2 + y_2^2}}$ are an orthogonal matrix, denoted by $R_1, R_2$. Thus, we have
     \begin{align*}
         A = \alpha_1 R_1 + \alpha_2 R_2,
     \end{align*}
@@ -1805,7 +1805,7 @@ Let $A$ and $B$ be $n \times n$ complex matrices. Show that $AB$ and $BA$ have t
     \end{align*}
     then $\det (BA - \lambda I) = 0$, which implies $\lambda$ is also an eigenvalue for $BA$. Thus, $AB$ and $BA$ have the same characteristic polynomial.
     
-    If $A$ is not invertible, then there exists $\varepsilon_k > 0$ such that $\displaystyle \lim_{k\to\infty} \varepsilon_k = 0$ and $A_k = A + \varepsilon_k I$ is invertible. Then, by the statement before, $A_kB$ and $BA_k$ have the same characteristic polynomial. Since $\displaystyle AB = \lim_{k\to\infty}A_kB$ and $\displaystyle BA = \lim_{k\to\infty}BA_k$, then $AB$ and $BA$ have the same characteristic polynomial.
+    If $A$ is not invertible, then there exists $\varepsilon_k > 0$ such that $  \lim_{k\to\infty} \varepsilon_k = 0$ and $A_k = A + \varepsilon_k I$ is invertible. Then, by the statement before, $A_kB$ and $BA_k$ have the same characteristic polynomial. Since $  AB = \lim_{k\to\infty}A_kB$ and $  BA = \lim_{k\to\infty}BA_k$, then $AB$ and $BA$ have the same characteristic polynomial.
     
     \item In general, $AB$ and $BA$ does not have the same minimal polynomial. Let
     \begin{align*}
@@ -1941,7 +1941,7 @@ Let $v \in \mathbb{C}^n$ be a nonzero vector (written as a clomun vector) and le
             x_1x_n & x_2x_n & \cdots & x_n^2
         \end{pmatrix}.
     \end{align*}
-    Also, we have $M^2 = cM$, where $\displaystyle c = \sum^n_{i=1} x_i^2$. Then, $\lambda^2 - c\lambda$ is a polynomial of $M$ that annihilates $M$. Since $M \neq 0$, then $\lambda$ is not the minimal polynomial of $M$. If $M - cI = 0$, then $\displaystyle x_i^2 - \sum^n_{j=1}x_j^2 = 0$ for each $i$, which implies $x_i = 0$ for each $i$. This is a contradiction with the fact that $v \neq 0$. Thus, the minila polynomial of $M$ is $m_M(\lambda) = \lambda^2 - c \lambda$.
+    Also, we have $M^2 = cM$, where $  c = \sum^n_{i=1} x_i^2$. Then, $\lambda^2 - c\lambda$ is a polynomial of $M$ that annihilates $M$. Since $M \neq 0$, then $\lambda$ is not the minimal polynomial of $M$. If $M - cI = 0$, then $  x_i^2 - \sum^n_{j=1}x_j^2 = 0$ for each $i$, which implies $x_i = 0$ for each $i$. This is a contradiction with the fact that $v \neq 0$. Thus, the minila polynomial of $M$ is $m_M(\lambda) = \lambda^2 - c \lambda$.
     
     For eigenvalue $0$, let $y = (y_1, \cdots, y_n)$ be eigenvector of $M$. Then, we have $My = 0$, which implies $x_i \sum^n_{j=1} x_j y_i = 0$ for each $i$. Since $v \neq 0$, then at least one of $x_i$ is nonzero, and we can assume $x_n \neq 0$. Then, we can have eigenvectors
     \begin{align*}
@@ -2165,7 +2165,7 @@ Let $A(t)$ be a differentiable $n \times n$ matrix valued function. Is it always
 Prove it or provide a counter example.
 \end{exercise}
 \begin{proof}
-For $n = 1$, and $A(t)$ is a function of one variable, then it is true that $\displaystyle \dv[]{}{t} A^2(t) = 2 A(t) \dv[]{A(t)}{t}$.
+For $n = 1$, and $A(t)$ is a function of one variable, then it is true that $  \dv[]{}{t} A^2(t) = 2 A(t) \dv[]{A(t)}{t}$.
 
 For $n \geq 2$, the statement is not always true. For example, let $A(t) = \begin{pmatrix} 0 & \sin x \\ \cos x & 0 \end{pmatrix}$, then
 \begin{align*}
@@ -2200,7 +2200,7 @@ Let $\Pi$ be the plane in $\mathbb{R}^3$ defined by
 Let $T$ be the reflection in $\mathbb{R}^3$ about the plane $\Pi$. Find the matrix representation of $T$.
 \end{exercise}
 \begin{proof}
-For any $x \in \mathbb{R}^3$, its reflection about the plane $\Pi$ is $\displaystyle Tx = x - 2 \frac{(x, u)}{(u,u)}u$, where $u$ is the vector that is orthogonal to $\Pi$ and $u = (3, 2, 1)^T$. Thus, we have
+For any $x \in \mathbb{R}^3$, its reflection about the plane $\Pi$ is $  Tx = x - 2 \frac{(x, u)}{(u,u)}u$, where $u$ is the vector that is orthogonal to $\Pi$ and $u = (3, 2, 1)^T$. Thus, we have
 \begin{align*}
     T = I - 2 \frac{uu^T}{(u,u)} = \frac{1}{14} \begin{pmatrix}
         -4 & -12 & -6 \\
@@ -2411,7 +2411,7 @@ form a basis for $X/Y$. It suffices to show that they span $X/Y$ and they are li
     \begin{align*}
         \sum^n_{k=m+1} c_k \{x_k\} = 0,
     \end{align*}
-    which implies $\displaystyle \sum^n_{k=m+1} c_k x_k = y$ for some $y \in Y$. We can express $y$ as $\displaystyle \sum^m_{i=1} a_i y_i$, then 
+    which implies $  \sum^n_{k=m+1} c_k x_k = y$ for some $y \in Y$. We can express $y$ as $  \sum^m_{i=1} a_i y_i$, then 
     \begin{align*}
         \sum^n_{k=m+1} c_k x_k - \sum^m_{i=1} a_i y_i = 0.
     \end{align*}
@@ -2692,11 +2692,11 @@ Let $A = (a_{ij})$ be an $n \times n$ real matrix satisfying the following diago
 Prove that $A$ is invertible.
 \end{exercise}
 \begin{proof}
-By Gershgorin circle theorem, every eigenvalue $\lambda$ lies within at least one of the Gershgorin discs $\displaystyle B\left(a_{ii}, r_i\right)$, where 
+By Gershgorin circle theorem, every eigenvalue $\lambda$ lies within at least one of the Gershgorin discs $  B\left(a_{ii}, r_i\right)$, where 
 \begin{align*}
     r_i = \sum_{j\neq i}\left|a_{ij}\right|.
 \end{align*}
-Since $\displaystyle \left|a_{ii}\right| > \sum_{j \neq i} \left|a_{ij}\right|$, then no eigenvalue is equal to zero, and thus, $A$ is invertible.
+Since $  \left|a_{ii}\right| > \sum_{j \neq i} \left|a_{ij}\right|$, then no eigenvalue is equal to zero, and thus, $A$ is invertible.
 \end{proof}
 
 \begin{proof}[Proof of Gershgorin circle theorem]
@@ -2713,6 +2713,188 @@ Thus, we have
     \left|\lambda - a_{ii}\right| = \left|\sum_{j\neq i} a_{ij}x_j\right| \leq \sum_{j\neq i} \left|a_{ij}\right| \left|x_j\right| \leq \sum_{j\neq i} \left|a_{ij}\right|.
 \end{align*}
 \end{proof}
+
+
+\newpage
+\section{August 2013 Exam}
+
+\begin{exercise}
+Let $A$ be a $n \times n$ real matrix. Prove that the null space of $A$ is the same as the null space of $A^TA$.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $x \in N_A$, then $Ax = 0$, and hence $A^TAx = 0$, which implies $x \in N_{A^TA}$. Therefore, $N_A \subset N_{A^TA}$.
+    
+    \item If $x \in N_{A^TA}$, then $ATAx = 0$. Also, $(A^TAx, x) = (Ax, Ax) = 0$, and hence $Ax = 0$. Therefore, $N_{A^TA} \subset N_A$.
+\end{enumerate}
+Thus, we have $N_A = N_{A^TA}$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Suppose $B$ is a projection and $A^2$ commutes with $B$. Is it true that $A$ commutes with $B$?
+\end{exercise}
+\begin{proof}
+No. Let $B = \begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix}$ and $A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$, then $B^2 = B$, which is a projection and $A^2 = 0$, and hence $A^2$ commutes with $B$. However,
+\begin{align*}
+    AB = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix} \neq \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} = BA.
+\end{align*} 
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}\label{August_2013_3}
+Suppose
+$$\sum^m_{j=1} A_j = I.$$
+Prove that 
+$$\sum^m_{j=1} \rank (A_j) = n$$ 
+if and only if for every $1 \leq j \leq m$, $A_j^2 = A_j$.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item ($\Rightarrow$) Since $\sum^m_{j=1} A_j = I$, then for any $x \in \mathbb{C}^n$, we have $(A_1 + \cdots + A_m)x = x$. Then $\mathbb{C}^n = R_{A_1} + R_{A_2} + \cdots + R_{A_m}$. 
+    
+    Suppose there exists $y \in \mathbb{C}^n$ such that $y \in R_{A_1}$ and $y \in R_{A_1} \cap R_{I - A_1}$. Let $\dim R_{A_1} = \rank (A_1) = k$, then there exists a basis $\{y, \alpha_2, \cdots, \alpha_k\}$ for $R_{A_1}$. Also, let $\dim(R_{A_2} + \cdots + R_{A_m}) = l$, then there exists a basis $\{y, \beta_2, \cdots, \beta_l\}$ for $R_{A_2} + \cdots + R_{A_m}$. By the formula $\dim(A + B) = \dim(A) + \dim(B) - \dim(A\cap B)$, we have
+    \begin{align*}
+        n = \dim \left(\sum^m_{j=1} R_{A_j}\right) \leq \dim \left(R_{A_1}\right) + \dim \left(\sum^m_{j=2} R_{A_j}\right) = k + l - 1,
+    \end{align*}
+    On the other hand,
+    \begin{align*}
+        n = \sum^m_{j=1} \dim (R_{A_j}) \geq \dim(R_{A_1}) + \dim \left(\sum^m_{j=2} R_{A_j}\right) = k + l,
+    \end{align*}
+    which is a contradiction. Therefore, $R_{A_i} \cap R_{I - A_i} = \varnothing$, and hence $\mathbb{C}^n = R_{A_1} \oplus \cdots \oplus R_{A_m}$.
+    
+    Then for any $x \in \mathbb{C}^n$, $(A_1 + \cdots + A_m)x = x$. Applying $A_1$ on both sides implies 
+    \begin{align*}
+        A_1^2 x + A_1(A_2 + \cdots + A_m)x = A_1^2x = A_1 x,
+    \end{align*}
+    since $(A_2 + \cdots + A_m)x \in N_{A_1}$. Similarly, we can have $A_j^2 = A_j$ for all $j = 1, \cdots m$.
+    
+    \item ($\Leftarrow$) If for any $j = 1, \cdots m$, $A_j^2 = A_j$, then the polynomial $p(x) = x^2 - x$ annihilates each $A_j$. Then eigenvalues of $A_j$ are $1$ and $0$. 
+    
+    We claim $\tr(A_j) = \rank (A_j)$. Indeed, if the minimal polynomial of $A_j$ is $m_{A_j} = x$, then $A_j = 0$, the claim is true. If $m_{A_j} = x - 1$, then $A_j = I$, the claim is true. If $m_{A_j} = x(x - 1)$, then $A_j$ is diagonalizable, that is there is an invertible matrix $U$ such that $A_j = P D P^{-1}$, where $D$ is diagonal matrix of form $D = \operatorname{diag}[1,\cdots,1, 0, \cdots, 0]$ and the number of $1$ is equal to $\rank (A_j)$, and hence the claim is also true.
+    
+    Thus, we have
+    \begin{align*}
+        \sum^m_{j=1} \rank(A_j) = \sum^m_{j=1} \tr(A) = \tr \left(\sum^m_{j=1} A_j\right) = \tr (I) = n.
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Exercise \ref{August_2013_3}(a)]
+Suppose $\sum^m_{j=1} \rank A_j = n$ and let $B_1 = \sum^m_{j=2} A_j$. Then $A_1 + B_1 = I$, and it follows that 
+    \begin{align*}
+        \rank A_1 + \rank B_1 \geq \rank I = n,
+    \end{align*}
+    also,
+    \begin{align}
+        \rank A_1 + \rank B_1 \leq \rank A_1 + \sum^m_{j=2} \rank A_j = n,
+    \end{align}
+    where we used the fact that for any $A, B$, $\rank A + \rank B \geq \rank (A+B)$. Then, $\rank A_1 + \rank B_1 = n$. With rank-nullity theorem, 
+    \begin{align*}
+        n & = \dim N_{A_1} + \dim N_{B_1} \\
+          & = \dim N_{A_1} + \dim N_{I - A_1} \\
+          & = \dim N_{A_1} + \dim N_{A_1 - I}.
+    \end{align*}
+    Then $A$ has a full set of eigenvectors with eigenvalues $0$ and $1$. Thus, $A_1$ is a projection, and similar argument can apply to each $A_j$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Suppose $V$ is the space of complex polynomials in $x$ and $y$ of total degree at most $3$, i.e.
+\begin{align*}
+    V = \left\{ \sum_{i,j\geq 0, i+j\leq 3} a_{ij} x^i y^j\, \Bigg| \, a_{ij} \in \mathbb{C} \right\}.
+\end{align*}
+Suppose $D_x: V \to V$ is the partial derivative with respect to $x$. Find the Jordan canonical form of $D_x$.
+\end{exercise}
+\begin{proof}
+Let $\{1,x,y,x^2,y^2,xy,x^2y,xy^2,x^3,y^3\}$ be a basis for $V$, then we have $D_x^4 = 0$, and hence the eigenvalue of $D_x$ is $0$. And since
+\begin{align*}
+    D_x(V) = \operatorname{span}\{0,1,0,2x,0,y,2xy,y^2,3x^2,0\},
+\end{align*}
+then $\dim N_{D_x} = 4$, which implies there are $4$ Jordan blocks in Jordan form. Now, 
+\begin{align*}
+    D_x^2(V) = \operatorname{span}\{0,0,0,2,0,0,2y,0,6x,0\},
+\end{align*}
+and then $\dim N_{D_x^2} = 7$, which implies that there are $3$ $k \times k$ Jordan blocks, where $k > 1$. Again,
+\begin{align*}
+    D_x^3(V) = \operatorname{span}\{0,0,0,0,0,0,0,0,6,0\},
+\end{align*}
+and then $\dim N_{D_x^3} = 9$, which implies that there are $2$ $l \times l$ Jordan blocks, where $l > 2$. Since $\dim N_{D_x^4} = 10$, then there is only $1$ $m \times m$ Jordan blocks, where $m > 3$. Thus, we obtain the Jordan canonical form of $D_x$
+\begin{align*}
+    J_{D_x} = \begin{pmatrix}
+        0 & 1 & & & & & & & & \\
+          & 0 & 1 & & & & & & & \\
+          &   & 0 & 1 & & & & & & \\
+          &   &   & 0 & 0 & & & & & \\
+          &   &   &   & 0 & 1 & & & & \\
+          &   &   &   &   & 0 & 1 & & & \\
+          &   &   &   &   &   & 0 & 0 & & \\
+          &   &   &   &   &   &   & 0 & 1 & \\
+          &   &   &   &   &   &   &   & 0 & 0 \\
+          &   &   &   &   &   &   &   &   & 0
+    \end{pmatrix}.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $A, B$ be two $n \times n$ matrices, prove that
+\begin{align*}
+    \det(I - AB) = \det(I - BA).
+\end{align*}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $B$ is invertible, then 
+    \begin{align*}
+        \det (I - AB) & = \det \left(B^{-1}\right) \det (B - BAB) \\
+        & = \det (B - BAB) \det \left(B^{-1}\right) \\
+        & = \det (I - BA).
+    \end{align*}
+    
+    \item If $B$ is not invertible, then let $\varepsilon_k \to 0$ such that $B_k = B + \varepsilon_k$ is invertible. Then the rest follows.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}\label{August_2013_6}
+Let $A, B$ be two $n \times n$ real orthogonal matrices, prove that
+\begin{align*}
+    \det A + \det B = 0
+\end{align*}
+implies that
+\begin{align*}
+    \det (A + B) = 0.
+\end{align*}
+\end{exercise}
+\begin{proof}
+Let $C = A^{-1}B$, and it is easy to see that $C$ is also orthogonal and $\det C = -1$. Indeed, $\det A = - \det B$, and $\det A = \pm 1$, and then $\det C = -1$. Then, $-1$ is an eigenvalue of $C$, and under Jordan form, we can know that $\det (I + C) = 0$. Thus, $\det (A + B) = \det A \det (I + A^{-1}B) = 0$.
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Exercise \ref{August_2013_6}]
+Since $A, B$ are orthogonal matrices, then $\det A = \pm 1$. Also, by $\det A + \det B = 0$, we could assume $\det A = 1$, then $\det B = -1$. Now, we have
+\begin{align*}
+    \det (A + B) & = \det \left(A^T\right) \det (A + B) \\
+    & = \det \left(I + A^T B\right) \\
+    & = \det \left(I + A^T B\right) \\
+    & = \det \left(B^TB + A^T B\right) \\
+    & = \det \left((B^T + A^T) B\right) \\
+    & = \det \left(B^T + A^T\right) \det (B) \\
+    & = - \det (A + B)^T = \det (A + B),
+\end{align*}
+and thus $\det (A + B) = 0$.
+\end{proof}
+
+
+
+
 
 
 \newpage
